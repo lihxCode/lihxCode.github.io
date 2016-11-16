@@ -85,21 +85,18 @@
 
 
 <meta name="description" content="1、什么是单例单例是一种设计模式，在应用生命周期内保持只有一个对象。
-2、单例的优缺点单例的优点是可以节省内存，减少系统资源的使用单例的缺点是扩展性低，对于多变的情况下无法使用单例，单例一旦确定了，对象指针是保存在静态区，对象是在堆中分配内存空间的，会在应用程序停止运行的时候才会进行释放
-3、单例的使用场合在整个应用中共享一份资源，一般用于工具类，例如：登陆控制器，网络请求等一个工程中需要多次使用">
+2、单例的优缺点单例的优点是可以节省内存，减少系统资源的使用单例的缺点是扩展性低，对于多变的情况下无法使用单例，单例一旦确定了，对象指针是保存在静态区，对象是在堆中分配内存空间的，会在应用程序停止运行的时候才会进行释放">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS单例解析">
 <meta property="og:url" content="http://yoursite.com/2016/11/16/iOS单例解析/index.html">
 <meta property="og:site_name" content="FD Blog">
 <meta property="og:description" content="1、什么是单例单例是一种设计模式，在应用生命周期内保持只有一个对象。
-2、单例的优缺点单例的优点是可以节省内存，减少系统资源的使用单例的缺点是扩展性低，对于多变的情况下无法使用单例，单例一旦确定了，对象指针是保存在静态区，对象是在堆中分配内存空间的，会在应用程序停止运行的时候才会进行释放
-3、单例的使用场合在整个应用中共享一份资源，一般用于工具类，例如：登陆控制器，网络请求等一个工程中需要多次使用">
-<meta property="og:updated_time" content="2016-11-16T06:35:28.000Z">
+2、单例的优缺点单例的优点是可以节省内存，减少系统资源的使用单例的缺点是扩展性低，对于多变的情况下无法使用单例，单例一旦确定了，对象指针是保存在静态区，对象是在堆中分配内存空间的，会在应用程序停止运行的时候才会进行释放">
+<meta property="og:updated_time" content="2016-11-16T08:56:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS单例解析">
 <meta name="twitter:description" content="1、什么是单例单例是一种设计模式，在应用生命周期内保持只有一个对象。
-2、单例的优缺点单例的优点是可以节省内存，减少系统资源的使用单例的缺点是扩展性低，对于多变的情况下无法使用单例，单例一旦确定了，对象指针是保存在静态区，对象是在堆中分配内存空间的，会在应用程序停止运行的时候才会进行释放
-3、单例的使用场合在整个应用中共享一份资源，一般用于工具类，例如：登陆控制器，网络请求等一个工程中需要多次使用">
+2、单例的优缺点单例的优点是可以节省内存，减少系统资源的使用单例的缺点是扩展性低，对于多变的情况下无法使用单例，单例一旦确定了，对象指针是保存在静态区，对象是在堆中分配内存空间的，会在应用程序停止运行的时候才会进行释放">
 
 
 
@@ -108,7 +105,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"right","display":"hide"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -154,7 +151,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -318,7 +315,7 @@
 
       
         <h4 id="1、什么是单例"><a href="#1、什么是单例" class="headerlink" title="1、什么是单例"></a>1、什么是单例</h4><p>单例是一种设计模式，在应用生命周期内保持只有一个对象。</p>
-<h4 id="2、单例的优缺点"><a href="#2、单例的优缺点" class="headerlink" title="2、单例的优缺点"></a>2、单例的优缺点</h4><p>单例的优点是可以节省内存，减少系统资源的使用<br>单例的缺点是扩展性低，对于多变的情况下无法使用单例，单例一旦确定了，对象指针是保存在静态区，对象是在堆中分配内存空间的，会在应用程序停止运行的时候才会进行释放</p>
+<h4 id="2、单例的优缺点"><a href="#2、单例的优缺点" class="headerlink" title="2、单例的优缺点"></a>2、单例的优缺点</h4><p>单例的优点是可以节省内存，减少系统资源的使用<br>单例的缺点是扩展性低，对于多变的情况下无法使用单例，单例一旦确定了，对象指针是保存在静态区，对象是在堆中分配内存空间的，会在应用程序停止运行的时候才会进行释放<br><a id="more"></a></p>
 <h4 id="3、单例的使用场合"><a href="#3、单例的使用场合" class="headerlink" title="3、单例的使用场合"></a>3、单例的使用场合</h4><p>在整个应用中共享一份资源，一般用于工具类，例如：登陆控制器，网络请求等一个工程中需要多次使用的控制器或者方法</p>
 <h4 id="4、单例的实现"><a href="#4、单例的实现" class="headerlink" title="4、单例的实现"></a>4、单例的实现</h4><p>新建一个继承NSObject的类,然后在.h文件中声明一个类方法<br>然后在.m文件中实现这个方法<br>声明一个静态变量对象并设置为nil<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">static Singleton *singleton = nil;</div><div class="line">+(Singleton*)shareManager&#123;</div><div class="line">  static dispatch_once_t onceToken;</div><div class="line">  dispatch_once(&amp;onceToken,^&#123;</div><div class="line">    singleton = [][Singleton alloc] init];</div><div class="line">  &#125;);</div><div class="line">  return singleton;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>重写allocWithZone方法来保证alloc的时候实例的唯一<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">+(instance)allocWithZone:(struct _NSZone *)zone&#123;</div><div class="line">  static dispatch_once_t onceToken;</div><div class="line">  dispatch_once(&amp;onceToken,^&#123;</div><div class="line">    singleton = [super allocWithZone:zone];</div><div class="line">  &#125;);</div><div class="line">  return singleton;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)copyWithZone:(NSZone *)zone&#123;</div><div class="line">  return self;</div><div class="line">&#125;</div><div class="line">-(id)mutableCopyWithZone:(NSZone *)zone</div><div class="line">&#123;</div><div class="line">  return self;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
