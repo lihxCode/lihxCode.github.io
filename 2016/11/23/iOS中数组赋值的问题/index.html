@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="iOS中数组赋值的问题背景：今天在开发的过程中把旧的数组直接给新的数组赋值，然后对新的数组进行操作，发现旧的数组竟然也发生了改变。想了很久都没想出来，然后问了一下大佬，然后，哎呀，发现自己好蠢。">
+<meta name="description" content="iOS中数组赋值的问题
+背景：今天在开发的过程中把旧的数组直接给新的数组赋值，然后对新的数组进行操作，发现旧的数组竟然也发生了改变。想了很久都没想出来，然后问了一下大佬，然后，哎呀，发现自己好蠢。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS中数组赋值的问题">
 <meta property="og:url" content="http://yoursite.com/2016/11/23/iOS中数组赋值的问题/index.html">
 <meta property="og:site_name" content="FD Blog">
-<meta property="og:description" content="iOS中数组赋值的问题背景：今天在开发的过程中把旧的数组直接给新的数组赋值，然后对新的数组进行操作，发现旧的数组竟然也发生了改变。想了很久都没想出来，然后问了一下大佬，然后，哎呀，发现自己好蠢。">
-<meta property="og:updated_time" content="2016-11-23T09:00:13.000Z">
+<meta property="og:description" content="iOS中数组赋值的问题
+背景：今天在开发的过程中把旧的数组直接给新的数组赋值，然后对新的数组进行操作，发现旧的数组竟然也发生了改变。想了很久都没想出来，然后问了一下大佬，然后，哎呀，发现自己好蠢。">
+<meta property="og:updated_time" content="2016-11-23T09:06:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS中数组赋值的问题">
-<meta name="twitter:description" content="iOS中数组赋值的问题背景：今天在开发的过程中把旧的数组直接给新的数组赋值，然后对新的数组进行操作，发现旧的数组竟然也发生了改变。想了很久都没想出来，然后问了一下大佬，然后，哎呀，发现自己好蠢。">
+<meta name="twitter:description" content="iOS中数组赋值的问题
+背景：今天在开发的过程中把旧的数组直接给新的数组赋值，然后对新的数组进行操作，发现旧的数组竟然也发生了改变。想了很久都没想出来，然后问了一下大佬，然后，哎呀，发现自己好蠢。">
 
 
 
@@ -311,11 +314,16 @@
       
 
       
-        <h5 id="iOS中数组赋值的问题"><a href="#iOS中数组赋值的问题" class="headerlink" title="iOS中数组赋值的问题"></a>iOS中数组赋值的问题</h5><p>背景：今天在开发的过程中把旧的数组直接给新的数组赋值，然后对新的数组进行操作，发现旧的数组竟然也发生了改变。想了很久都没想出来，然后问了一下大佬，然后，哎呀，发现自己好蠢。<br><a id="more"></a><br>过程：我的数组的赋值过程代码：  </p>
-<pre><code class="objective-c">NSMutableArray *newArray = [[NSMutableArray alloc] init];
+        <h5 id="iOS中数组赋值的问题"><a href="#iOS中数组赋值的问题" class="headerlink" title="iOS中数组赋值的问题"></a>iOS中数组赋值的问题</h5><ul>
+<li><strong>背景：</strong><br>今天在开发的过程中把旧的数组直接给新的数组赋值，然后对新的数组进行操作，发现旧的数组竟然也发生了改变。想了很久都没想出来，然后问了一下大佬，然后，哎呀，发现自己好蠢。  <a id="more"></a>  </li>
+<li><strong>过程：</strong><br>我的数组的赋值过程代码：<pre><code class="objective-c">NSMutableArray *newArray = [[NSMutableArray alloc] init];
 newArray = dataModel.lastDataArray;
 </code></pre>
-<p>过程大概就是这样子，先初始化一个新的数组，然后把一个对象的数组赋给它，之后的操作就是对newArray进行insertObject，之后发现lastDataArray数组中的元素也发生了改变。<br>原因：首先对newArray进行初始化之后再用lastDataArray赋值这样子写是不正确的，因为直接赋值是指向了同一个内存地址，只要你对newArray进行操作了，那么lastDataArray就一定会改变。它们两个其实就是一个东西，而不是独立出来的。<br>解决方法：<br>使用<code>［NSMutableArray arrayWithArray:dataModel.lastDataArray］;</code>对newArray进行赋值，不需要进行alloc init操作。<br>延伸：<br>如果我们数组中存的是对象呢，上面的解决方法能否解决对对象中的属性的操作产生的影响，答案是不能的，只有我们在赋值的时候对每一个对象的属性进行copy，这样才会使得做出的操作对两个数组中的所有元素不会产生任何影响，包括数组中的对象的属性的操作。<br>ps：这或许是一个非常基础的问题，但是以前没有怎么留意，只有挖坑了才发现，最后希望这是我最后一次再去犯这种错误。</p>
+过程大概就是这样子，先初始化一个新的数组，然后把一个对象的数组赋给它，之后的操作就是对newArray进行insertObject，之后发现lastDataArray数组中的元素也发生了改变。  </li>
+<li><strong>原因：</strong><br>首先对newArray进行初始化之后再用lastDataArray赋值这样子写是不正确的，因为直接赋值是指向了同一个内存地址，只要你对newArray进行操作了，那么lastDataArray就一定会改变。它们两个其实就是一个东西，而不是独立出来的。  </li>
+<li><strong>解决方法：</strong><br>使用<code>［NSMutableArray arrayWithArray:dataModel.lastDataArray］;</code>对newArray进行赋值，不需要进行alloc init操作。  </li>
+<li><strong>延伸：</strong><br>如果我们数组中存的是对象呢，上面的解决方法能否解决对对象中的属性的操作产生的影响，答案是不能的，只有我们在赋值的时候对每一个对象的属性进行copy，这样才会使得做出的操作对两个数组中的所有元素不会产生任何影响，包括数组中的对象的属性的操作。<br>ps：这或许是一个非常基础的问题，但是以前没有怎么留意，只有挖坑了才发现，最后希望这是我最后一次再去犯这种错误。</li>
+</ul>
 
       
     </div>
