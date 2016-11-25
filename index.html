@@ -239,6 +239,123 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/超链接和路径/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="FD">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="FD Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="FD Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/25/超链接和路径/" itemprop="url">
+                  超链接和路径
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-25T19:38:40+08:00">
+                2016-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="超链接和路径"><a href="#超链接和路径" class="headerlink" title="超链接和路径"></a>超链接和路径</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh_cn"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>超链接和路径<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://wwww.baidu.com"</span>&gt;</span>百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--元素a是超链接标签，有一些属性为：</span></div><div class="line">	href a元素所指向的资源url。</div><div class="line">	hreflang a元素所指向的资源所使用的语言。</div><div class="line">	media 说明元素指向的资源用于哪种设备。</div><div class="line">	rel 说明文档与所链接的资源的关系类型。</div><div class="line">	target 指定用以打开所链接的资源的浏览环境。</div><div class="line">	type 说明所链接资源的MIME类型，比如text/html。</div><div class="line">	在这个属性中，href和target用得比较多。href其实是必须的，不然a元素就变成一个空元素了，如果属性值是以http://开头的，就链接都外部的网站，如果不是http://开头，可以链接到本地的网站之类的，target的属性值一般可以设置为_blank，这样的话就可以在打开链接的时候新建一个页面来打开，而不是在原有的网页上进行跳转。</div><div class="line">	--&gt;</div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://lihxCode.github.io"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>my blog<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--target属性的值还有</span></div><div class="line">	_parent 在父窗框中打开文档</div><div class="line">	_self 在当前窗口中打开文档,默认的</div><div class="line">	_top 在顶层窗口中打开文档</div><div class="line">	_parent和_top都是基于框架的,在HTML5中框架一般都是弃用的，都是基于&lt;iframe&gt;，且是结合php和javaScript来使用的，框架很少使用了</div><div class="line">	--&gt;</div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"file:////D:/blog/HTML5/code/myindex.html"</span>&gt;</span>myindex<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--上面的目录根据自己的文件路径来设置，我这里是随意写的，并不能访问--&gt;</span></div><div class="line">	<span class="comment">&lt;!--这是绝对路径，如果我们把整个目录移走了，那么就无法访问了--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"myindex.html"</span>&gt;</span>myindex<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--这个是相对路径，使用相对路径必须要在同一个磁盘或者目录下，如果在同一个目录下的话，那么链接就使用myindex.html，如果不在同一个目录下，那么久使用目录结构法</span></div><div class="line">	目录语法：</div><div class="line">	同一个目录：myindex.html或者./myindex.html</div><div class="line">	子目录: xxx/myindex.html</div><div class="line">	孙子目录: xxxx/xxx/myindex.html</div><div class="line">	父目录: ../myindex.html</div><div class="line">	爷爷目录 ../../myindex.html</div><div class="line">	--&gt;</div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#1"</span>&gt;</span>first<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#2"</span>&gt;</span>second<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#3"</span>&gt;</span>third<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	&amp;lt; a name = "1" &amp;gt; &amp;lt; /a &amp;gt; &amp;lt; a id = "3" &amp;gt; &amp;lt;/a&amp;gt;</div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#0001"</span>&gt;</span>第一章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#0002"</span>&gt;</span>第二章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#0003"</span>&gt;</span>第三章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">"0001"</span> <span class="attr">id</span> = <span class="string">"0001"</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">"0002"</span> <span class="attr">id</span> = <span class="string">"0002"</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">"0003"</span> <span class="attr">id</span> = <span class="string">"0003"</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--锚点,其实就是一种标记，比如说我们读一篇很长的文章，我们需要翻到后面的某一个地方去，这是时候就使用到锚点了,href的值需要和name/id中的值一样，a元素的值加个空格就好了，加个空格是为了适配各种浏览器，有些不加也可以--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/文本元素/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1000,7 +1117,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
