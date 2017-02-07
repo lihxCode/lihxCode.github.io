@@ -85,18 +85,18 @@
 
 
 <meta name="description" content="iOS 创建圆角的方法1、直接设置layer.cornerRadius的值就可以，缺点是会导致性能问题，特别是在tableview上使用圆角的时候，会导致卡顿
-2、使用coreGraphics和贝赛尔曲线来设置圆角首先是初始化一个UIImageView，设置好Image,然后使用UIGraphicsBeginImageContextWithOptions方法来对UIImageview进行创建一个c">
+2、使用coreGraphics和贝塞尔曲线来设置圆角首先是初始化一个UIImageView，设置好Image,然后使用UIGraphicsBeginImageContextWithOptions方法来对UIImageview进行创建一个c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 圆角">
 <meta property="og:url" content="http://yoursite.com/2017/02/07/iOS-圆角/index.html">
 <meta property="og:site_name" content="FD Blog">
 <meta property="og:description" content="iOS 创建圆角的方法1、直接设置layer.cornerRadius的值就可以，缺点是会导致性能问题，特别是在tableview上使用圆角的时候，会导致卡顿
-2、使用coreGraphics和贝赛尔曲线来设置圆角首先是初始化一个UIImageView，设置好Image,然后使用UIGraphicsBeginImageContextWithOptions方法来对UIImageview进行创建一个c">
-<meta property="og:updated_time" content="2017-02-07T04:28:59.000Z">
+2、使用coreGraphics和贝塞尔曲线来设置圆角首先是初始化一个UIImageView，设置好Image,然后使用UIGraphicsBeginImageContextWithOptions方法来对UIImageview进行创建一个c">
+<meta property="og:updated_time" content="2017-02-07T06:04:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 圆角">
 <meta name="twitter:description" content="iOS 创建圆角的方法1、直接设置layer.cornerRadius的值就可以，缺点是会导致性能问题，特别是在tableview上使用圆角的时候，会导致卡顿
-2、使用coreGraphics和贝赛尔曲线来设置圆角首先是初始化一个UIImageView，设置好Image,然后使用UIGraphicsBeginImageContextWithOptions方法来对UIImageview进行创建一个c">
+2、使用coreGraphics和贝塞尔曲线来设置圆角首先是初始化一个UIImageView，设置好Image,然后使用UIGraphicsBeginImageContextWithOptions方法来对UIImageview进行创建一个c">
 
 
 
@@ -315,8 +315,8 @@
 
       
         <h4 id="iOS-创建圆角的方法"><a href="#iOS-创建圆角的方法" class="headerlink" title="iOS 创建圆角的方法"></a>iOS 创建圆角的方法</h4><p>1、直接设置layer.cornerRadius的值就可以，缺点是会导致性能问题，特别是在tableview上使用圆角的时候，会导致卡顿</p>
-<p>2、使用coreGraphics和贝赛尔曲线来设置圆角<br>首先是初始化一个UIImageView，设置好Image,然后使用UIGraphicsBeginImageContextWithOptions方法来对UIImageview进行创建一个context，UIGraphicsBeginImageContextWithOptions是有三个参数的，第一个是imageview的size,第二个是是否透明，第三个是缩放因子.<br>然后再调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[UIBezierPath bezierPathWithRoundedRect:Frame cornerRadius:CGFloat] addClip];  </div><div class="line">[imageview drawRect:imageview.frame];</div><div class="line">imageview.image = UIGraphicsGetImageFromCurrentImageContext;</div><div class="line">UIGraphicsEndImageContext();</div></pre></td></tr></table></figure></p>
-<p>3、使用贝赛尔曲线和CAShapeLayer设置圆角<br>一样是初始化一个UIImageView，设置好iamge.然后调用初始化一个UIBezierPath的对象，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRect byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSize];</div><div class="line">CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];</div><div class="line">maskLayer.path = maskPath.CGPath;</div></pre></td></tr></table></figure></p>
+<p>2、使用coreGraphics和贝塞尔曲线来设置圆角<br>首先是初始化一个UIImageView，设置好Image,然后使用UIGraphicsBeginImageContextWithOptions方法来对UIImageview进行创建一个context，UIGraphicsBeginImageContextWithOptions是有三个参数的，第一个是imageview的size,第二个是是否透明，第三个是缩放因子.<br>然后再调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[UIBezierPath bezierPathWithRoundedRect:Frame cornerRadius:CGFloat] addClip];  </div><div class="line">[imageview drawRect:imageview.frame];</div><div class="line">imageview.image = UIGraphicsGetImageFromCurrentImageContext;</div><div class="line">UIGraphicsEndImageContext();</div></pre></td></tr></table></figure></p>
+<p>3、使用贝塞尔曲线和CAShapeLayer设置圆角<br>一样是初始化一个UIImageView，设置好iamge.然后调用初始化一个UIBezierPath的对象，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRect byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSize];</div><div class="line">CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];</div><div class="line">maskLayer.path = maskPath.CGPath;</div></pre></td></tr></table></figure></p>
 <p>最后设置imageView的layer层的mask即可</p>
 
       
