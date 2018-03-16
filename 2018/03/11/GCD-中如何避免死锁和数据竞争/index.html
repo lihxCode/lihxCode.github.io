@@ -88,7 +88,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="GCD-中如何避免死锁和数据竞争">
 <meta property="og:url" content="http://yoursite.com/2018/03/11/GCD-中如何避免死锁和数据竞争/index.html">
-<meta property="og:site_name" content="FD Blog">
+<meta property="og:site_name" content="Kx Blog">
 <meta property="og:description" content="一、死锁条件：1、同步操作中使用同步调用dispatch_sync;2、使用了串行队列3、调用了方法自己4、方法中使用了dispatch_barrier_sync概括：一般死锁都是在同步操作中使用了同步调用，同步调用需要当前任务完成之后才能继续执行，当前任务需要同步调用执行才算执行，导致死循环，这样就会导致死锁。需要注意使用的队列是串行队列还是并行队列">
 <meta property="og:updated_time" content="2018-03-16T14:33:34.000Z">
 <meta name="twitter:card" content="summary">
@@ -127,7 +127,7 @@
 
 
 
-  <title> GCD-中如何避免死锁和数据竞争 | FD Blog </title>
+  <title> GCD-中如何避免死锁和数据竞争 | Kx Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -168,7 +168,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">FD Blog</span>
+      <span class="site-title">Kx Blog</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -251,15 +251,15 @@
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/GCD-中如何避免死锁和数据竞争/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="FD">
+    <meta itemprop="name" content="Kx">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="FD Blog">
+    <meta itemprop="name" content="Kx Blog">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="FD Blog" src="">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
     </span>
   </span>
 
@@ -420,9 +420,9 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg"
-               alt="FD" />
-          <p class="site-author-name" itemprop="name">FD</p>
-          <p class="site-description motion-element" itemprop="description">坚守本心</p>
+               alt="Kx" />
+          <p class="site-author-name" itemprop="name">Kx</p>
+          <p class="site-description motion-element" itemprop="description">keep</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
@@ -437,7 +437,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -481,7 +481,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">FD</span>
+  <span class="author" itemprop="copyrightHolder">Kx</span>
 </div>
 
 
