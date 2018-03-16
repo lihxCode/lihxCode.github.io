@@ -249,7 +249,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/超链接和路径/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/OC重写property属性的set-get方法一点注意/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="FD">
@@ -274,8 +274,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/25/超链接和路径/" itemprop="url">
-                  超链接和路径
+                <a class="post-title-link" href="/2017/11/21/OC重写property属性的set-get方法一点注意/" itemprop="url">
+                  OC重写property属性的set&get方法一点注意
                 </a>
               
             
@@ -289,8 +289,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-25T19:38:40+08:00">
-                2016-11-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T11:59:00+08:00">
+                2017-11-21
               </time>
             
 
@@ -327,7 +327,7 @@
       
         
           
-            <h4 id="超链接和路径"><a href="#超链接和路径" class="headerlink" title="超链接和路径"></a>超链接和路径</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh_cn"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>超链接和路径<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://wwww.baidu.com"</span>&gt;</span>百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--元素a是超链接标签，有一些属性为：</span></div><div class="line">	href a元素所指向的资源url。</div><div class="line">	hreflang a元素所指向的资源所使用的语言。</div><div class="line">	media 说明元素指向的资源用于哪种设备。</div><div class="line">	rel 说明文档与所链接的资源的关系类型。</div><div class="line">	target 指定用以打开所链接的资源的浏览环境。</div><div class="line">	type 说明所链接资源的MIME类型，比如text/html。</div><div class="line">	在这个属性中，href和target用得比较多。href其实是必须的，不然a元素就变成一个空元素了，如果属性值是以http://开头的，就链接都外部的网站，如果不是http://开头，可以链接到本地的网站之类的，target的属性值一般可以设置为_blank，这样的话就可以在打开链接的时候新建一个页面来打开，而不是在原有的网页上进行跳转。</div><div class="line">	--&gt;</div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://lihxCode.github.io"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>my blog<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--target属性的值还有</span></div><div class="line">	_parent 在父窗框中打开文档</div><div class="line">	_self 在当前窗口中打开文档,默认的</div><div class="line">	_top 在顶层窗口中打开文档</div><div class="line">	_parent和_top都是基于框架的,在HTML5中框架一般都是弃用的，都是基于&lt;iframe&gt;，且是结合php和javaScript来使用的，框架很少使用了</div><div class="line">	--&gt;</div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"file:////D:/blog/HTML5/code/myindex.html"</span>&gt;</span>myindex<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--上面的目录根据自己的文件路径来设置，我这里是随意写的，并不能访问--&gt;</span></div><div class="line">	<span class="comment">&lt;!--这是绝对路径，如果我们把整个目录移走了，那么就无法访问了--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"myindex.html"</span>&gt;</span>myindex<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--这个是相对路径，使用相对路径必须要在同一个磁盘或者目录下，如果在同一个目录下的话，那么链接就使用myindex.html，如果不在同一个目录下，那么久使用目录结构法</span></div><div class="line">	目录语法：</div><div class="line">	同一个目录：myindex.html或者./myindex.html</div><div class="line">	子目录: xxx/myindex.html</div><div class="line">	孙子目录: xxxx/xxx/myindex.html</div><div class="line">	父目录: ../myindex.html</div><div class="line">	爷爷目录 ../../myindex.html</div><div class="line">	--&gt;</div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#1"</span>&gt;</span>first<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#2"</span>&gt;</span>second<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#3"</span>&gt;</span>third<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#0001"</span>&gt;</span>第一章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#0002"</span>&gt;</span>第二章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#0003"</span>&gt;</span>第三章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">"0001"</span> <span class="attr">id</span> = <span class="string">"0001"</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">"0002"</span> <span class="attr">id</span> = <span class="string">"0002"</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">"0003"</span> <span class="attr">id</span> = <span class="string">"0003"</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--锚点,其实就是一种标记，比如说我们读一篇很长的文章，我们需要翻到后面的某一个地方去，这是时候就使用到锚点了,href的值需要和name/id中的值一样，a元素的值加个空格就好了，加个空格是为了适配各种浏览器，有些不加也可以--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+            <p>当重写了property声明的属性的set方法之后，再声明get方法，在get方法中使用_xxx变量时会报错，因为set和get方法都重写了会导致系统自动生成的_xxx变量失效，相当于没有生成过一个这样的变量，直接使用是会报错的。<br>解决方法就是在.m文件中对属性制定一个命名@synthesize  xxx = _xxx;</p>
 
           
         
@@ -366,7 +366,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/文本元素/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/08/Collection-CALayerArray-xxxxxxx-was-mutated-while-being-enumerated/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="FD">
@@ -391,8 +391,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/25/文本元素/" itemprop="url">
-                  文本元素
+                <a class="post-title-link" href="/2017/11/08/Collection-CALayerArray-xxxxxxx-was-mutated-while-being-enumerated/" itemprop="url">
+                  Collection--CALayerArray-xxxxxxx--was-mutated-while-being-enumerated-
                 </a>
               
             
@@ -406,8 +406,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-25T18:57:23+08:00">
-                2016-11-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-08T22:22:22+08:00">
+                2017-11-08
               </time>
             
 
@@ -444,7 +444,7 @@
       
         
           
-            <h4 id="文本元素"><a href="#文本元素" class="headerlink" title="文本元素"></a>文本元素</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span> = <span class="string">"zh_cn"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>文本元素<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">b</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">b</span>&gt;</span> <span class="comment">&lt;!-- 加粗，表示关键字或者产品名，表示的东西并不是很重要--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">strong</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> <span class="comment">&lt;!-- 加粗， 表示重要的文字--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="comment">&lt;!-- 换行，强制换行--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span> Thisabc <span class="tag">&lt;<span class="name">wbr</span>&gt;</span>dkdjaidjaid<span class="tag">&lt;<span class="name">wbr</span>&gt;</span>hedadaiod is apple. <span class="comment">&lt;!-- br放在任意位置之后就会换行，但是wbr是根据浏览器的宽度适当地进行裁剪换行--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">i</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="comment">&lt;!-- 作用是倾斜，表示英文或者一些术语，并不是特别强调--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">em</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">em</span>&gt;</span> <span class="comment">&lt;!--作用也是倾斜，表示强调--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">s</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">s</span>&gt;</span> <span class="comment">&lt;!--删除线，其实就是表示不准确的删除--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">del</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">del</span>&gt;</span> <span class="comment">&lt;!--也是删除线，但是表示的是删除相关的文字--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">u</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">u</span>&gt;</span> <span class="comment">&lt;!--下划线，不是强调--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">ins</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">ins</span>&gt;</span> <span class="comment">&lt;!--也是下划线，但是表示的是强调--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">small</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">small</span>&gt;</span>  <span class="comment">&lt;!--缩小字号 语义上来看，用于免责，和澄清声明--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">sub</span>&gt;</span>5<span class="tag">&lt;/<span class="name">sub</span>&gt;</span> <span class="comment">&lt;!--数学中的上标--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">sup</span>&gt;</span>5<span class="tag">&lt;/<span class="name">sup</span>&gt;</span> <span class="comment">&lt;!--数学中的下标--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">code</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="comment">&lt;!--表示计算机代码片段--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">var</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">var</span>&gt;</span> <span class="comment">&lt;!--表示编程语言中的变量--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">samp</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">samp</span>&gt;</span> <span class="comment">&lt;!--表示程序或者计算机的输出--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">kbd</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">kbd</span>&gt;</span> <span class="comment">&lt;!--表示拥护的输入--&gt;</span></div><div class="line">	<span class="comment">&lt;!--code,var,samp,kdb都属于英文范畴内的，需要设置lang="en"才有效--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">abbr</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">abbr</span>&gt;</span><span class="comment">&lt;!--表示缩写--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">dfn</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">dfn</span>&gt;</span><span class="comment">&lt;!--表示术语--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">q</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">q</span>&gt;</span><span class="comment">&lt;!--表示引用，实际就是加一对双引号--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">cite</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">cite</span>&gt;</span><span class="comment">&lt;!--加粗,表示引用其他作品的标题--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">mark</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">mark</span>&gt;</span><span class="comment">&lt;!--实际就是加一个黄色的背景，黑色的字，表示与上下文相关而突出的字--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">time</span>&gt;</span>2016-11-25<span class="tag">&lt;/<span class="name">time</span>&gt;</span><span class="comment">&lt;!--表示日期--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">span</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="comment">&lt;!--表示一般性文本，语义上就是表示一段文本，经常用来设置CSS等操作--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+            <p>在遍历subviews中的view的同时对view进行removeFromSubview操作，有几率会导致crash，google之后得到解决方案：<a href="http://blog.cpease.com/2016/09/07/Collection-CALayerArray-0xxxxxxxxx-was-mutated-while-being-enumerated/" target="_blank" rel="external">链接</a></p>
 
           
         
@@ -483,7 +483,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/基本样式/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/16/reuseTableViewCell/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="FD">
@@ -508,8 +508,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/25/基本样式/" itemprop="url">
-                  基本样式
+                <a class="post-title-link" href="/2017/10/16/reuseTableViewCell/" itemprop="url">
+                  reuseTableViewCell
                 </a>
               
             
@@ -523,8 +523,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-25T18:56:38+08:00">
-                2016-11-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-16T19:38:27+08:00">
+                2017-10-16
               </time>
             
 
@@ -561,7 +561,8 @@
       
         
           
-            <h4 id="基本样式"><a href="#基本样式" class="headerlink" title="基本样式"></a>基本样式</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span> <span class="comment">&lt;!--文档类型说明，主要告诉浏览器这是什么类型的文件--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh_cn"</span>&gt;</span> <span class="comment">&lt;!--html标签，html是文档的开始和结束标志，lang表示的是语言，zh_cn表示的是中文，en表示的是英文--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> <span class="comment">&lt;!--用来包含元数据，元数据包括&lt;link&gt;,&lt;meta&gt;,&lt;noscript&gt;,&lt;script&gt;,&lt;style&gt;,&lt;title&gt;,link提供css信息，script提供javaScript信息，title提供标题信息--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="comment">&lt;!-- 提供文档的信息，提供的文档的编码 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>基本结构<span class="tag">&lt;/<span class="name">title</span>&gt;</span> <span class="comment">&lt;!-- 提供标题信息--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span> <span class="comment">&lt;!-- 用来包含元数据的head标签的结束标志--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span> <span class="comment">&lt;!-- 用来包含文档的元素，即网页上的所有可以看到的内容都在这个元素内部添加--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"wwww.lihxCode.github.io"</span>&gt;</span> <span class="comment">&lt;!-- 超链接 用来跳转网址--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+            <p>一、reusableTableCells和visiableCells<br>reusableTableCells为存储复用cell的字典<br>visiableCells为存储当前屏幕使用的cell的数组</p>
+<p>二、复用机制<br>使用tableview时，一开始reusableTableCells是为空的，所以需要通过alloc init来生成一屏幕显示数量+1个cell。生成的cell放到visiableCells中，然后当滑动屏幕时，第一个cell滑出屏幕，这个cell没有被销毁，而是存放到reusableTableCells中。当再次滑动之后，顶部的cell从visiableCells取出放到reusableTableCells，最底部显示最新的cell，这个cell就是从reusableTableCells中取出来的。</p>
 
           
         
@@ -600,7 +601,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/23/iOS-RunTime分析/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/12/CAST-String-AS-INT/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="FD">
@@ -625,8 +626,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/23/iOS-RunTime分析/" itemprop="url">
-                  iOS RunTime分析
+                <a class="post-title-link" href="/2017/10/12/CAST-String-AS-INT/" itemprop="url">
+                  CAST(String-AS-INT)
                 </a>
               
             
@@ -640,8 +641,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-23T19:17:31+08:00">
-                2016-11-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T17:08:00+08:00">
+                2017-10-12
               </time>
             
 
@@ -677,11 +678,361 @@
 
       
         
-          <h4 id="1、什么是RunTime"><a href="#1、什么是RunTime" class="headerlink" title="1、什么是RunTime"></a>1、什么是RunTime</h4><p>RunTime即运行时，objective-c是一种运行时的语言，什么是运行时呢，运行时就是在程序运行的时候才去确定我们的对象的类型和需要调用类和对象相对应的方法。</p>
-<h4 id="2、RunTime的用法"><a href="#2、RunTime的用法" class="headerlink" title="2、RunTime的用法"></a>2、RunTime的用法</h4><p>RunTime是在我们程序运行的时候才去确定我们的对象类型，和调用类与对象相对应的方法，属性等，所以我们可以在程序运行时去修改对象的属性，方法，修改类。<br>
+          
+            <p>在Sqlite中进行SELECT查询语句的时候，如果需要比较的数字的大小类型是字符串类型，可以使用<code>CAST(xxxx AS INT)</code>进行类型转换之后再进行比较，否则直接使用大于等于小于比较得出的结果是不正确的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/27/SQL语句加WHERE-1-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="FD">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="FD Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="FD Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/27/SQL语句加WHERE-1-1/" itemprop="url">
+                  SQL语句加WHERE-1-=-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-27T11:21:00+08:00">
+                2017-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>加上<code>WHERE 1 = 1</code>是用于构造动态的SQL语句，<code>SELECT * FROM .... WHERE 1 = 1 + 动态构造条件语句</code>。为了避免WHERE 关键字后面的第一个词直接就是 “and”而导致语法错误。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/16/iOS-weak/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="FD">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="FD Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="FD Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/16/iOS-weak/" itemprop="url">
+                  iOS-weak
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-16T16:30:15+08:00">
+                2017-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、weak的意思是不持有对象，但是对象的释放也是在超出其生命周期之后，所以说，使用weak修饰的属性在该类的生命周期结束之后才会被释放，并不是说weak修饰就是马上马上会被释放，如果修饰的是局部变量那就是马上会被释放。总结：用什么修饰符并不影响属性的生命周期，我们用weak来修饰delegate以防循环引用导致内存泄漏，虽然delegate的修饰符是weak，但是在生命周期中，delegate这个变量是不会被系统马上回收的，直到delegate这个属性所在的类超出了其生命周期之后才会被释放<br>2、系统的回收机制是怎样的呢？<br>首先释放的类的对象，我们alloc init生成出来的其实是一个对象，只是我们这个类持有了这个对象。释放完类的对象之后，释放对应的属性，因为属性被废弃了，所以属性持有的对象的强引用也没了，所以相对应地对象也被释放了。总结：类的对象-&gt;类-&gt;类的属性-&gt;类的属性持有的对象。个人认为系统对内存的管理和回收顺序是这样的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/typedef struct和struct的区别/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="FD">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="FD Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="FD Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/13/typedef struct和struct的区别/" itemprop="url">
+                  typedef struct 和struct的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T17:20:50+08:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="typedef-struct-和struct的区别"><a href="#typedef-struct-和struct的区别" class="headerlink" title="typedef struct 和struct的区别"></a>typedef struct 和struct的区别</h3><h6 id="宁静致远"><a href="#宁静致远" class="headerlink" title="宁静致远"></a>宁静致远</h6><h5 id="一、直接上代码"><a href="#一、直接上代码" class="headerlink" title="一、直接上代码"></a>一、直接上代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">typedef struct Person&#123;</div><div class="line">    int age;</div><div class="line">&#125;Per;</div><div class="line">Per p;</div><div class="line">p.age =20;</div><div class="line"></div><div class="line">struct Student&#123;</div><div class="line">    int age;</div><div class="line">&#125;Std;</div><div class="line">Std.age = 15;</div><div class="line"></div><div class="line">typedef struct Teacher&#123;</div><div class="line">    int age;</div><div class="line">&#125;Teacher,*Man;</div><div class="line">Teacher tea;</div><div class="line">tea.age = 50;</div><div class="line">Man m = NULL;</div><div class="line">m-&gt;age = 40;</div><div class="line"></div><div class="line">struct Boss&#123;</div><div class="line">    int age;</div><div class="line">&#125;*Woman;</div><div class="line">Woman-&gt;age = 55;</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/23/iOS-RunTime分析/#more" rel="contents">
+            <a class="btn" href="/2017/09/13/typedef struct和struct的区别/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -722,7 +1073,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/23/iOS中数组赋值的问题/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/数组解析/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="FD">
@@ -747,8 +1098,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/23/iOS中数组赋值的问题/" itemprop="url">
-                  iOS中数组赋值的问题
+                <a class="post-title-link" href="/2017/06/20/数组解析/" itemprop="url">
+                  数组解析
                 </a>
               
             
@@ -762,8 +1113,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-23T16:56:21+08:00">
-                2016-11-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T09:10:20+08:00">
+                2017-06-20
               </time>
             
 
@@ -799,15 +1150,10 @@
 
       
         
-          <h5 id="iOS中数组赋值的问题"><a href="#iOS中数组赋值的问题" class="headerlink" title="iOS中数组赋值的问题"></a>iOS中数组赋值的问题</h5><ul>
-<li><strong>背景：</strong><br>今天在开发的过程中把旧的数组直接给新的数组赋值，然后对新的数组进行操作，发现旧的数组竟然也发生了改变。想了很久都没想出来，然后问了一下大佬，然后，哎呀，发现自己好蠢。
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/23/iOS中数组赋值的问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>1、<code>int array[20] = {0}</code>表示的是数组的第一个数为0，其他也默认为0<br>2、<code>int array[20] = {1}</code>表示的是数组的第一个数为1，其他默认为0<br>3、<code>int array[20]; array[19] = 100</code>除了最后一个数位赋的值100，其他都为随机数，可能为0，也可能为其他数。</p>
+
+          
         
       
     </div>
@@ -844,7 +1190,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/16/iOS单例解析/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/指针解析/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="FD">
@@ -869,8 +1215,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/16/iOS单例解析/" itemprop="url">
-                  iOS单例解析
+                <a class="post-title-link" href="/2017/06/16/指针解析/" itemprop="url">
+                  指针解析
                 </a>
               
             
@@ -884,8 +1230,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-16T14:22:04+08:00">
-                2016-11-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-16T12:17:22+08:00">
+                2017-06-16
               </time>
             
 
@@ -921,15 +1267,11 @@
 
       
         
-          <h4 id="1、什么是单例"><a href="#1、什么是单例" class="headerlink" title="1、什么是单例"></a>1、什么是单例</h4><p>单例是一种设计模式，在应用生命周期内保持只有一个对象。</p>
-<h4 id="2、单例的优缺点"><a href="#2、单例的优缺点" class="headerlink" title="2、单例的优缺点"></a>2、单例的优缺点</h4><p>单例的优点是可以节省内存，减少系统资源的使用<br>单例的缺点是扩展性低，对于多变的情况下无法使用单例，单例一旦确定了，对象指针是保存在静态区，对象是在堆中分配内存空间的，会在应用程序停止运行的时候才会进行释放<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/16/iOS单例解析/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>1、指针的类型：指的是指针自身的类型<br><code>int *p;</code>指针p的类型是<code>int*</code><br>2、指针指向的类型：指的是指针指向的数据的类型<br><code>int *p</code>指针p指向的类型是<code>int</code><br>3、指针的值：指的是指针指向的数据的值，会被编译器当成一个地址。位置是从指针的值的代表的内存地址开始，长度为sizeof(指针指向的类型)<br>4、指针占据的内存大小=sizeof(指针的类型)<br>5、<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int size = 10;</div><div class="line">int *i;</div><div class="line">i = (int *)malloc(size);</div><div class="line">i[i] = 1;</div></pre></td></tr></table></figure></p>
+<p><code>i[1]</code>变成了数组赋值？其实i[1] = <em>(i+1); i+1相当于i+ 1 </em> sizeof(int)，这样就可以找到下一个元素的首地址，和i[1]是一样的。</p>
+
+          
         
       
     </div>
@@ -966,7 +1308,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/16/hexo+Github搭建个人博客/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/20/iOS-Block/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="FD">
@@ -991,8 +1333,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/16/hexo+Github搭建个人博客/" itemprop="url">
-                  hexo+Github搭建个人博客
+                <a class="post-title-link" href="/2017/04/20/iOS-Block/" itemprop="url">
+                  iOS-Block
                 </a>
               
             
@@ -1006,8 +1348,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-16T12:30:51+08:00">
-                2016-11-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T15:31:00+08:00">
+                2017-04-20
               </time>
             
 
@@ -1043,10 +1385,10 @@
 
       
         
-          <h4 id="前言-之前用过wordpress来搭建博客，hexo-Github没有实现过，花了点时间来研究一下，虽然过程遇到了一点点小问题，但是最后还是成功了，网上也有很多这些这样的教程，我也只是来记录我捣鼓的过程，我先来写一篇搭建博客的，后面再去拓展主题之类的内容，注意以下内容是在Mac下进行的。"><a href="#前言-之前用过wordpress来搭建博客，hexo-Github没有实现过，花了点时间来研究一下，虽然过程遇到了一点点小问题，但是最后还是成功了，网上也有很多这些这样的教程，我也只是来记录我捣鼓的过程，我先来写一篇搭建博客的，后面再去拓展主题之类的内容，注意以下内容是在Mac下进行的。" class="headerlink" title="前言:之前用过wordpress来搭建博客，hexo+Github没有实现过，花了点时间来研究一下，虽然过程遇到了一点点小问题，但是最后还是成功了，网上也有很多这些这样的教程，我也只是来记录我捣鼓的过程，我先来写一篇搭建博客的，后面再去拓展主题之类的内容，注意以下内容是在Mac下进行的。"></a>前言:之前用过wordpress来搭建博客，hexo+Github没有实现过，花了点时间来研究一下，虽然过程遇到了一点点小问题，但是最后还是成功了，网上也有很多这些这样的教程，我也只是来记录我捣鼓的过程，我先来写一篇搭建博客的，后面再去拓展主题之类的内容，注意以下内容是在Mac下进行的。</h4>
+          <p>一、Block是什么<br>Block在OC中可以理解为一个对象。也可以说是一个匿名函数，类似于C语言中的指针。<br>二、Block的语法<br>Block的语法可以定义为两部分，第一部分是Block的声明，第二部分是Block的定义，Block的声明是在等于号的左边，Block的定义则在右边。例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void (^Callback)(NSString *text) = ^(NSString *text)&#123;</div><div class="line">  //do something</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/16/hexo+Github搭建个人博客/#more" rel="contents">
+            <a class="btn" href="/2017/04/20/iOS-Block/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1082,7 +1424,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1123,7 +1465,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1133,7 +1475,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1173,7 +1515,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

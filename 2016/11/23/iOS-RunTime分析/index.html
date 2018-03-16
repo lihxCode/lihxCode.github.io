@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="review," />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="FD Blog">
 <meta property="og:description" content="1、什么是RunTimeRunTime即运行时，objective-c是一种运行时的语言，什么是运行时呢，运行时就是在程序运行的时候才去确定我们的对象的类型和需要调用类和对象相对应的方法。
 2、RunTime的用法RunTime是在我们程序运行的时候才去确定我们的对象类型，和调用类与对象相对应的方法，属性等，所以我们可以在程序运行时去修改对象的属性，方法，修改类。">
-<meta property="og:updated_time" content="2016-11-23T11:28:43.000Z">
+<meta property="og:updated_time" content="2018-03-16T08:43:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS RunTime分析">
 <meta name="twitter:description" content="1、什么是RunTimeRunTime即运行时，objective-c是一种运行时的语言，什么是运行时呢，运行时就是在程序运行的时候才去确定我们的对象的类型和需要调用类和对象相对应的方法。
@@ -330,7 +330,7 @@
 <p>从我们调用方法到底层运行的顺序是：实例方法的调用，然后是底层进行performSelector:然后到objc_msgSend。</p>
 <h4 id="4、RunTime的使用场景"><a href="#4、RunTime的使用场景" class="headerlink" title="4、RunTime的使用场景"></a>4、RunTime的使用场景</h4><ul>
 <li><p>1、使用RunTime进行方法的调换。<br>很常见的一个例子，在我们进行图片加载的时候，我们有这样一个需求，在加载图片之后判断这个图片是否为空，如果为空就输出error。我们首先想到就是使用分类来做，使用分类来做是没有问题的，前提是你还没有写多少代码，如果你的项目很庞大，不可能全部都重新修改你加载图片的方法吧，所以说使用分类不是不行，而是很不方便，那么我们需要怎么做呢？我们要坐的就是在分类里面对我们的方法进行替换。首先我们需要写一个我们用来替换原本加载图片的方法的方法。</p>
-<pre><code class="objective-c">+(UIImage *)judgeImageName:(NSString *)name{
+<pre><code class="objective-c">+(UIImage \*)judgeImageName:(NSString \*)name{
   UIImage \*image = [UIImage imageNamed:name];
   if (image == nil) {
       NSLog(@&quot;error&quot;);
@@ -347,7 +347,7 @@ Method_exchangeImplementations(imageNamedMethod,judgeimageNamedMethod);
 <p>需要注意的是，我们使用了这种做法来替换方法之后不能去调用我们在分类中写的方法了，原因是你调用这个方法，这个方法调用原来的方法，原来的方法又去调用我们写的方法，这样的话就是一个死循环。</p>
 </li>
 <li><p>2、使用RunTime添加属性<br>分类是默认不能添加属性的，就算我们用@property声明了一个属性，该属性的set和get只会声明而不会实现。但是我们可以使用RunTime来为分类添加属性。<br><code>@property (nonatomic, strong)NSString *age</code><br>然后在age的set和get方法中实现  </p>
-<pre><code class="objective-c">-(void)setAge:(NSString *)name{
+<pre><code class="objective-c">-(void)setAge:(NSString \*)name{
 objc_setAssociatedObject(self,@&quot;age&quot;,age,OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 </code></pre>
@@ -390,7 +390,7 @@ objc_getAssociatedObject(self,@&quot;age&quot;);
       
         <div class="post-tags">
           
-            <a href="/tags/review/" rel="tag"># review</a>
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
         </div>
       
@@ -479,7 +479,7 @@ objc_getAssociatedObject(self,@&quot;age&quot;);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -489,7 +489,7 @@ objc_getAssociatedObject(self,@&quot;age&quot;);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -545,7 +545,7 @@ objc_getAssociatedObject(self,@&quot;age&quot;);
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
