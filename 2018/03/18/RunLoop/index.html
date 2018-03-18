@@ -1,0 +1,664 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1、RunLoop概念
+什么是RunLoopRunLoop在字面上的意思为运行循环，执行代码的时候我们都知道当代码执行完之后程序就会结束或者推出，但是我们的app不能执行完一段代码就退出。这个时候，就需要RunLoop，RunLoop原理上来说是while循环，只有真正接收到退出的信号的时候才会结束循环，否则就会一直执行下去。本质上来说RunLoop其实是一个对象，这个对象管理处理的事件和相关信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RunLoop">
+<meta property="og:url" content="http://yoursite.com/2018/03/18/RunLoop/index.html">
+<meta property="og:site_name" content="Kx Blog">
+<meta property="og:description" content="1、RunLoop概念
+什么是RunLoopRunLoop在字面上的意思为运行循环，执行代码的时候我们都知道当代码执行完之后程序就会结束或者推出，但是我们的app不能执行完一段代码就退出。这个时候，就需要RunLoop，RunLoop原理上来说是while循环，只有真正接收到退出的信号的时候才会结束循环，否则就会一直执行下去。本质上来说RunLoop其实是一个对象，这个对象管理处理的事件和相关信息">
+<meta property="og:image" content="https://blog.ibireme.com/wp-content/uploads/2015/05/RunLoop_1.png">
+<meta property="og:updated_time" content="2018-03-18T09:17:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RunLoop">
+<meta name="twitter:description" content="1、RunLoop概念
+什么是RunLoopRunLoop在字面上的意思为运行循环，执行代码的时候我们都知道当代码执行完之后程序就会结束或者推出，但是我们的app不能执行完一段代码就退出。这个时候，就需要RunLoop，RunLoop原理上来说是while循环，只有真正接收到退出的信号的时候才会结束循环，否则就会一直执行下去。本质上来说RunLoop其实是一个对象，这个对象管理处理的事件和相关信息">
+<meta name="twitter:image" content="https://blog.ibireme.com/wp-content/uploads/2015/05/RunLoop_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/18/RunLoop/"/>
+
+
+
+
+
+  <title> RunLoop | Kx Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6cf97f2b673bb61a01a495c15ccc6602";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kx Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/RunLoop/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                RunLoop
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-18T14:38:17+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1、RunLoop概念"><a href="#1、RunLoop概念" class="headerlink" title="1、RunLoop概念"></a>1、RunLoop概念</h4><ul>
+<li><p>什么是RunLoop<br>RunLoop在字面上的意思为运行循环，执行代码的时候我们都知道当代码执行完之后程序就会结束或者推出，但是我们的app不能执行完一段代码就退出。<br>这个时候，就需要RunLoop，RunLoop原理上来说是while循环，只有真正接收到退出的信号的时候才会结束循环，否则就会一直执行下去。<br>本质上来说RunLoop其实是一个对象，这个对象管理处理的事件和相关信息，并提供一个函数来执行循环的逻辑，函数执行之后，会处于一种等待-&gt;处理-&gt;等待的状态。直到真正退出为止。</p>
+</li>
+<li><p>iOS中的RunLoop<br>在iOS中，有两个RunLoop对象，分别为CFRunLoopRef和NSRunLoop。<br>CFRunLoopRef是属于Core Foundation框架的，线程安全。<br>NSRunLoop是对CFRunLoopRef的封装，线程不安全。  </p>
+</li>
+</ul>
+<h4 id="2、RunLoop和线程"><a href="#2、RunLoop和线程" class="headerlink" title="2、RunLoop和线程"></a>2、RunLoop和线程</h4><ul>
+<li>RunLoop和线程有什么关系<br>首先，先了解一点概念。iOS不允许直接创建RunLoop,只提供了两个获取当前RunLoop的接口，<code>CFRunLoopGetMain()</code>和<code>CFRunLoopGetCurrent()</code>，<code>CFRunLoopGetMain()</code>是获取主线程的RunLoop，<code>CFRunLoopGetCurrent()</code>是获取当前线程的RunLoop。<br>线程和RunLoop的关系是一一对应的，关系保存在一个字典中，线程作为键，RunLoop作为值，主线程的RunLoop在一开始就已经创建，但是多线程中的RunLoop在我们创建线程的时候并不会自动创建，只有当我们使用获取RunLoop的接口去获取当前线程的RunLoop的时候才会去创建，RunLoop的销毁是在线程结束的时候。  <a id="more"></a>  
+</li>
+</ul>
+<h4 id="3、RunLoop的接口"><a href="#3、RunLoop的接口" class="headerlink" title="3、RunLoop的接口"></a>3、RunLoop的接口</h4><ul>
+<li><p>RunLoop的类（五个类）<br>1、<code>CFRunLoopRef</code><br>2、<code>CFRunLoopModeRef</code><br>3、<code>CFRunLoopSourceRef</code><br>4、<code>CFRunLoopTimerRef</code><br>5、<code>CFRunLoopObserverRef</code>    </p>
+</li>
+<li><p>RunLoop五个类的关系<br><code>CFRunLoopRef</code>中有若干个<code>CFRunLoopModeRef</code>，若干个<code>CFRunLoopSourceRef</code>和若干个<code>CFRunLoopTimerRef</code>和若干个<code>CFRunLoopObserverRef</code>组成一个<code>CFRunLoopModeRef</code>。每个RunLoop在一个状态下只能指定一个<code>CFRunLoopModeRef</code>,如果要切换model需要先退出当前的RunLoop，然后指定一个model再进入。   </p>
+</li>
+<li><p>CFRunLoopModeRef中的三个类的解析<br><code>CFRunLoopSourceRef</code>表示的是事件源，即事件产生的地方，有Source0和Source1两种。<br>Source0: 只有一个回调，不能主动触发事件，也不能说不能主动触发，使用时需要先调用<code>CFRunLoopSourceSignal(source)</code>来对事件源进行标记，然后调用<code>CFRunLoopWakeUp(RunLoop)</code>来唤醒RunLoop，让RunLoop来处理事件。<br>Source1: 有一个mach_port和一个回调，用于通过内核和其他线程相互发送消息，可以主动唤醒RunLoop的线程<br><code>CFRunLoopTimerRef</code>表示的是时间触发器，类似于NSTimer,可以与NSTimer转换，里面包含了一个时间长度和一个回调，当其加入到RunLoop时，RunLoop会注册对于的时间点，时间点到的时候，RunLoop会被唤醒执行回调，和我们使用NSTimer时候所理解的类似。<br><code>CFRunLoopObserverRef</code>表示的是观察者，里面包含类一个回调，当RunLoop的状态发生了改变之后，观察者能通过回调接受这个变化，主要观察的点为四个：<code>kCFRunLoopEntry</code>表示即将进入RunLoop，<code>kCFRunLoopBeforeTimers</code>表示即将处理Timer，<code>kCFRunLoopBeforeSources</code>表示即将处理Source，<code>kCFRunLoopBeforeWaiting</code>表示即将进入休眠，<code>kCFRunLoopAfterWaiting</code>表示即将从休眠中唤醒，<code>kCFRunLoopExit</code>表示的是即将退出RunLoop。</p>
+</li>
+<li>CFRunLoopSourceRef,CFRunLoopTimerRef,CFRunLoopObserverRef<br>三个类被统称为mode item,一个item可以同时加入到多个mode中，一个mode重复加入一个item是不会有效果的，即会去重，一个mode如果没有item，那么RunLoop会直接退出，不进入循环。  </li>
+</ul>
+<h4 id="4、RunLoop中的mode"><a href="#4、RunLoop中的mode" class="headerlink" title="4、RunLoop中的mode"></a>4、RunLoop中的mode</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">struct __CFRunLoopMode &#123;</div><div class="line">    CFStringRef _name;            // Mode Name, 例如 @&quot;kCFRunLoopDefaultMode&quot;</div><div class="line">    CFMutableSetRef _sources0;    // Set</div><div class="line">    CFMutableSetRef _sources1;    // Set</div><div class="line">    CFMutableArrayRef _observers; // Array</div><div class="line">    CFMutableArrayRef _timers;    // Array</div><div class="line">    ...</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct __CFRunLoop &#123;</div><div class="line">    CFMutableSetRef _commonModes;     // Set</div><div class="line">    CFMutableSetRef _commonModeItems; // Set&lt;Source/Observer/Timer&gt;</div><div class="line">    CFRunLoopModeRef _currentMode;    // Current Runloop Mode</div><div class="line">    CFMutableSetRef _modes;           // Set</div><div class="line">    ...</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>一个Mode可以把自己标记为common，需要把_name，即Mode Name添加到RunLoop中的_commonModes中，这样的作用是当RunLoop状态发生改变的时候，_commonModeItems的mode item会同步到标记为common的Mode中。<br>CFRunLoopRef管理Mode的接口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CFRunLoopAddCommonMode(CFRunLoopRef runloop, CFStringRef modeName);</div><div class="line">CFRunLoopRunInMode(CFStringRef modeName, ...);</div></pre></td></tr></table></figure></p>
+<p>通过ModeName来添加commonMode到RunLoop中，如果当前的RunLoop中不存在modeName的Mode，会自动帮你创建一个，也可以通过ModeName来获取对应的Mode。<br>CFRunLoopModeRef管理Mode Item的接口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CFRunLoopAddSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFStringRef modeName);</div><div class="line">CFRunLoopAddObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFStringRef modeName);</div><div class="line">CFRunLoopAddTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFStringRef mode);</div><div class="line">CFRunLoopRemoveSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFStringRef modeName);</div><div class="line">CFRunLoopRemoveObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFStringRef modeName);</div><div class="line">CFRunLoopRemoveTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFStringRef mode);</div></pre></td></tr></table></figure></p>
+<h4 id="5、系统默认的Mode"><a href="#5、系统默认的Mode" class="headerlink" title="5、系统默认的Mode"></a>5、系统默认的Mode</h4><ul>
+<li>kCFRunLoopDefaultMode：系统默认的Mode，主线程在这个Mode下运行</li>
+<li>UITrackingRunLoopMode：界面的Mode，主要是用户保证界面滑动不受其他Mode影响</li>
+<li>UIInitializationRunLoopMode：app启动时使用的Mode，启动后该Mode就不再使用</li>
+<li>GSEventReceiveRunLoopMode：接收系统内部的Mode，一般都用不到</li>
+<li>kCFRunLoopCommonModes：占位的Mode，也是其他Mode的集合。    </li>
+</ul>
+<h4 id="6、RunLoop的内部逻辑"><a href="#6、RunLoop的内部逻辑" class="headerlink" title="6、RunLoop的内部逻辑"></a>6、RunLoop的内部逻辑</h4><p><img src="https://blog.ibireme.com/wp-content/uploads/2015/05/RunLoop_1.png" alt="RunLoop"><br>从上面的图片可以看出，Observer是作为一个观察者，只有在RunLoop的状态发生变化的时候才会去使用，Source1负责监听系统端口和其他线程相互发送消息，它能够主动唤醒RunLoop(由操作系统内核进行管理，例如CFMessagePort消息)，Source0是负责App内部事件，由App负责管理触发，例如UITouch事件，一个是系统内部，一个是app内部。</p>
+<h4 id="7、RunLoop实现的功能"><a href="#7、RunLoop实现的功能" class="headerlink" title="7、RunLoop实现的功能"></a>7、RunLoop实现的功能</h4><ul>
+<li>Autorelease：自动释放内存在两个RunLoop之间</li>
+<li>事件响应：系统的事件响应，比如说触摸，锁屏等，通过注册Source1来接受事件，Source1接受到事件之后，会调用_UIApplicationHandleEventQueue进行内部事件分发。</li>
+<li>定时器：NSTimer注册到RunLoop中，RunLoop会为其重复的时间点注册好事件，但是RunLoop为了节省资源，并不会在很准确地回调这个事件，NSTimer有一个tolerance属性，表示误差范围。如果某个时间点错过了，这个时间点的回调会被跳过，不会延后执行。</li>
+<li>performSelecter:afterDelay:和performSelector:onThread: 内部会创建一个Timer并加到RunLoop中，如果当前线程没有RunLoop,这个方法就会失效，比如在子线程中调用这个方法。</li>
+<li>GCD中也有用到RunLoop：使用dispatch_async(dispatch_get_main_queue,block);的时候，会向主现场的RunLoop发送消息，RunLoop会被唤醒，并从消息中取得这个block，其实就是对于的东西传递过去然后执行。</li>
+</ul>
+<h4 id="8、RunLoop应用"><a href="#8、RunLoop应用" class="headerlink" title="8、RunLoop应用"></a>8、RunLoop应用</h4><p>1、长驻线程：(AFNetworking代码)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">+ (void)networkRequestThreadEntryPoint:(id)__unused object &#123;</div><div class="line">    @autoreleasepool &#123;</div><div class="line">        [[NSThread currentThread] setName:@&quot;AFNetworking&quot;];</div><div class="line"></div><div class="line">        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];</div><div class="line">        [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];</div><div class="line">        [runLoop run];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (NSThread *)networkRequestThread &#123;</div><div class="line">    static NSThread *_networkRequestThread = nil;</div><div class="line">    static dispatch_once_t oncePredicate;</div><div class="line">    dispatch_once(&amp;oncePredicate, ^&#123;</div><div class="line">        _networkRequestThread = [[NSThread alloc] initWithTarget:self selector:@selector(networkRequestThreadEntryPoint:) object:nil];</div><div class="line">        [_networkRequestThread start];</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    return _networkRequestThread;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)start &#123;</div><div class="line">    [self.lock lock];</div><div class="line">    if ([self isCancelled]) &#123;</div><div class="line">        [self performSelector:@selector(cancelConnection) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];</div><div class="line">    &#125; else if ([self isReady]) &#123;</div><div class="line">        self.state = AFOperationExecutingState;</div><div class="line"></div><div class="line">        [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];</div><div class="line">    &#125;</div><div class="line">    [self.lock unlock];</div><div class="line">&#125;</div><div class="line">self.lock = [[NSRecursiveLock alloc] init];</div><div class="line">self.lock.name = kAFNetworkingLockName;</div><div class="line">self.runLoopModes = [NSSet setWithObject:NSRunLoopCommonModes];</div></pre></td></tr></table></figure></p>
+<p>2、NSTimer：UIScrollView滑动的时候，NSTimer会停止，添加到NSRunLoopCommonModes就不会有问题了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];</div><div class="line">NSRunLoop *runLoop = [NSRunLoop currentRunLoop];</div><div class="line">[runLoop addTimer:timer forMode:NSRunLoopCommonModes];</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/15/NSString-存着-NSData-的十六进制数据，转回NSData/" rel="next" title="NSString-存着-NSData-的十六进制数据，转回NSData">
+                <i class="fa fa-chevron-left"></i> NSString-存着-NSData-的十六进制数据，转回NSData
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg"
+               alt="Kx" />
+          <p class="site-author-name" itemprop="name">Kx</p>
+          <p class="site-description motion-element" itemprop="description">keep</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、RunLoop概念"><span class="nav-number">1.</span> <span class="nav-text">1、RunLoop概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、RunLoop和线程"><span class="nav-number">2.</span> <span class="nav-text">2、RunLoop和线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、RunLoop的接口"><span class="nav-number">3.</span> <span class="nav-text">3、RunLoop的接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、RunLoop中的mode"><span class="nav-number">4.</span> <span class="nav-text">4、RunLoop中的mode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、系统默认的Mode"><span class="nav-number">5.</span> <span class="nav-text">5、系统默认的Mode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、RunLoop的内部逻辑"><span class="nav-number">6.</span> <span class="nav-text">6、RunLoop的内部逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、RunLoop实现的功能"><span class="nav-number">7.</span> <span class="nav-text">7、RunLoop实现的功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、RunLoop应用"><span class="nav-number">8.</span> <span class="nav-text">8、RunLoop应用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kx</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
