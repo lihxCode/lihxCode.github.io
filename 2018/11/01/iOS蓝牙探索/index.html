@@ -1,0 +1,668 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="好久没写博客了，之前只是稍微用过蓝牙相关的，没有总结整理，今天有时间总结一波，顺便附带一个小demo，用手机蓝牙控制Mac的锁屏，当前最常用的蓝牙框架还是CoreBluetooth
+
+1、CoreBluetooth关键字：
+
+中心设备(Centeral)：主动扫描周围设备的设备。
+外设(Peripheral)：被扫描的设备。
+广播(Ad)：不停地向外发送信号，使得中心设备能够搜索到。
+服务(Se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS蓝牙相关">
+<meta property="og:url" content="http://yoursite.com/2018/11/01/iOS蓝牙探索/index.html">
+<meta property="og:site_name" content="Kx Blog">
+<meta property="og:description" content="好久没写博客了，之前只是稍微用过蓝牙相关的，没有总结整理，今天有时间总结一波，顺便附带一个小demo，用手机蓝牙控制Mac的锁屏，当前最常用的蓝牙框架还是CoreBluetooth
+
+1、CoreBluetooth关键字：
+
+中心设备(Centeral)：主动扫描周围设备的设备。
+外设(Peripheral)：被扫描的设备。
+广播(Ad)：不停地向外发送信号，使得中心设备能够搜索到。
+服务(Se">
+<meta property="og:updated_time" content="2018-11-02T08:32:28.941Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS蓝牙相关">
+<meta name="twitter:description" content="好久没写博客了，之前只是稍微用过蓝牙相关的，没有总结整理，今天有时间总结一波，顺便附带一个小demo，用手机蓝牙控制Mac的锁屏，当前最常用的蓝牙框架还是CoreBluetooth
+
+1、CoreBluetooth关键字：
+
+中心设备(Centeral)：主动扫描周围设备的设备。
+外设(Peripheral)：被扫描的设备。
+广播(Ad)：不停地向外发送信号，使得中心设备能够搜索到。
+服务(Se">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/01/iOS蓝牙探索/"/>
+
+
+
+
+
+  <title> iOS蓝牙相关 | Kx Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6cf97f2b673bb61a01a495c15ccc6602";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kx Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/iOS蓝牙探索/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS蓝牙相关
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-01T14:15:26+08:00">
+                2018-11-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>好久没写博客了，之前只是稍微用过蓝牙相关的，没有总结整理，今天有时间总结一波，顺便附带一个小demo，用手机蓝牙控制Mac的锁屏，当前最常用的蓝牙框架还是CoreBluetooth</p>
+</blockquote>
+<h5 id="1、CoreBluetooth"><a href="#1、CoreBluetooth" class="headerlink" title="1、CoreBluetooth"></a>1、CoreBluetooth</h5><p>关键字：</p>
+<ul>
+<li>中心设备(Centeral)：主动扫描周围设备的设备。</li>
+<li>外设(Peripheral)：被扫描的设备。</li>
+<li>广播(Ad)：不停地向外发送信号，使得中心设备能够搜索到。</li>
+<li>服务(Services)：相关的功能，读写，通知等</li>
+<li>特征(Characteristic)：服务中的单位，一个服务有多个特征，特征都有对应的Value，一般读写的数据就是这个Value。</li>
+<li>UUID：用于区分不同的服务和特征，一般都会设置一个服务UUID和一个特征UUID，注意，UUID最好是数字和大写字母的混合，应该要遵循这样的规则，否则获取服务的时候得到的服务数组会为nil。</li>
+</ul>
+<h5 id="2、Centeral-中心设备"><a href="#2、Centeral-中心设备" class="headerlink" title="2、Centeral(中心设备)"></a>2、Centeral(中心设备)</h5><p>首先定义了两个UUID<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#define kCharacteristicUUID @&quot;EA0D&quot;</div><div class="line">#define kServiceUUID @&quot;84941CC5-EA0D-4CAE-BB06-1F849CCF8495&quot;</div></pre></td></tr></table></figure></p>
+<p>中心设备<code>CBCentralManager</code>使用该类对中心设备进行管理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong) CBCentralManager *centeralManager;</div><div class="line">self.centeralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue()];</div><div class="line">///初始化结束之后一般都会回调下面这个代理，判断当前的状态，如果是可用状态，那么就进行外设搜索。</div><div class="line">///状态</div><div class="line">- (void)centralManagerDidUpdateState:(CBCentralManager *)central &#123;</div><div class="line">    switch (central.state) &#123;</div><div class="line">        case CBManagerStateUnknown:</div><div class="line">            NSLog(@&quot;未知状态&quot;);</div><div class="line">            break;</div><div class="line">        case CBManagerStatePoweredOn:</div><div class="line">            NSLog(@&quot;可用状态&quot;);</div><div class="line">            [self searchPeripheral];</div><div class="line">            break;</div><div class="line">        case CBManagerStateResetting:</div><div class="line">            NSLog(@&quot;重设状态&quot;);</div><div class="line">            break;</div><div class="line">        case CBManagerStatePoweredOff:</div><div class="line">            NSLog(@&quot;关闭状态&quot;);</div><div class="line">            break;</div><div class="line">        case CBManagerStateUnsupported:</div><div class="line">            NSLog(@&quot;不可用状态&quot;);</div><div class="line">            break;</div><div class="line">        case CBManagerStateUnauthorized:</div><div class="line">            NSLog(@&quot;未授权状态&quot;);</div><div class="line">            break;</div><div class="line">        default:</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">- (void)searchPeripheral &#123;</div><div class="line">    if (@available(iOS 10.0, *)) &#123;</div><div class="line">        if (self.centeralManager.state != CBManagerStatePoweredOn) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">    &#125;</div><div class="line">    [self.centeralManager stopScan];</div><div class="line">    [self.centeralManager scanForPeripheralsWithServices:nil options:nil];</div><div class="line">&#125;</div><div class="line"></div><div class="line">///搜索外设时会回调用下面的代理</div><div class="line">///发现设备</div><div class="line">///发现的设备经过去重之后保存起来，之后选择对应的外设进行连接</div><div class="line">- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary&lt;NSString *,id&gt; *)advertisementData RSSI:(NSNumber *)RSSI &#123;</div><div class="line">    if (![self isExistPeriperhal:peripheral]) &#123;</div><div class="line">        [self.peripheralArray addObject:peripheral];</div><div class="line">        [self.tableView reloadData];</div><div class="line">        NSString *peripheralName = [advertisementData objectForKey:@&quot;kCBAdvDataLocalName&quot;];</div><div class="line">        NSLog(@&quot;%@&quot;,peripheralName);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">///调用tableview的选中代理</div><div class="line">- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    self.peripheral = self.peripheralArray[indexPath.row];</div><div class="line">    self.peripheral.delegate = self;</div><div class="line">    [self.centeralManager cancelPeripheralConnection:self.peripheral];</div><div class="line">    [self.centeralManager connectPeripheral:self.peripheral options:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">///连接之后回根据连接状态回调对应的代理</div><div class="line">///连接上设备</div><div class="line">- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral &#123;</div><div class="line">    NSLog(@&quot;connect success&quot;);</div><div class="line">    [self.peripheral discoverServices:@[[CBUUID UUIDWithString:@&quot;84941CC5-EA0D-4CAE-BB06-1F849CCF8495&quot;]]];</div><div class="line">    [self presentViewController:self.control animated:YES completion:nil];</div><div class="line">&#125;</div><div class="line"></div><div class="line">///连接失败</div><div class="line">- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error &#123;</div><div class="line">    NSLog(@&quot;connect failed&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">///断开连接</div><div class="line">- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error &#123;</div><div class="line">    NSLog(@&quot;disconnect&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后是进行服务获取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error &#123;</div><div class="line">    for (CBService *service in peripheral.services) &#123;</div><div class="line">        NSLog(@&quot;外设的服务：%@&quot;,service);</div><div class="line">    &#125;</div><div class="line">    CBService *service = peripheral.services.lastObject;</div><div class="line">    // 根据UUID寻找服务中的特征</div><div class="line">    if (service) &#123;</div><div class="line">        [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:@&quot;EA0D&quot;]] forService:service];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error &#123;</div><div class="line">    NSArray *characteristics = [service characteristics];</div><div class="line">    if (peripheral != self.peripheral) &#123;</div><div class="line">        NSLog(@&quot;Wrong Peripheral.\n&quot;);</div><div class="line">        return ;</div><div class="line">    &#125;</div><div class="line">    if (error != nil) &#123;</div><div class="line">        NSLog(@&quot;error: %@\n&quot;, error);</div><div class="line">        return ;</div><div class="line">    &#125;</div><div class="line">    for (CBCharacteristic *characteristic in characteristics) &#123;</div><div class="line">        if ([[[characteristic UUID] UUIDString] isEqualToString:@&quot;EA0D&quot;]) &#123;</div><div class="line">            self.positionCharacteristic = characteristic;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>获取到对应的特征之后就可以进行数据传输<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">- (void)sleep &#123;</div><div class="line">    if (!self.peripheral) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];</div><div class="line">    [dict setObject:@&quot;sleep&quot; forKey:@&quot;status&quot;];</div><div class="line">    NSString *str = [self convertToJsonData:dict];</div><div class="line">    NSData *data =[str dataUsingEncoding:NSUTF8StringEncoding];</div><div class="line"></div><div class="line">    [self.peripheral writeValue:data forCharacteristic:self.positionCharacteristic type:CBCharacteristicWriteWithResponse];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)wakeUp &#123;</div><div class="line">    if (!self.peripheral) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];</div><div class="line">    [dict setObject:@&quot;wake&quot; forKey:@&quot;status&quot;];</div><div class="line">    NSString *str = [self convertToJsonData:[dict copy]];</div><div class="line">    NSData *data =[str dataUsingEncoding:NSUTF8StringEncoding];</div><div class="line">    [self.peripheral writeValue:data forCharacteristic:self.positionCharacteristic type:CBCharacteristicWriteWithResponse];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>中心设备的大概流程就是这样下来，初始化，搜索外设，连接，搜索服务，然后数据传输。</p>
+<h5 id="3、Peripheral-外设"><a href="#3、Peripheral-外设" class="headerlink" title="3、Peripheral(外设)"></a>3、Peripheral(外设)</h5><a id="more"></a>
+<p>其实外设和中心设备的流程类型，首先是初始化外设管理，然后进行状态判断，判断完之后进行特征和服务配置，配置完之后添加服务，然后进行广播，等待连接，连接之后就是接收发送过来的数据，根据数据进行相关的处理，整体流程就是这么简单，接下来看相关代码<br>下面的代码是在创建的Mac App中编写的，非手机App，因为手机是中心设备，Macbook为外设，需要创建相关的app来获取接收手机发过来的数据<br>///定义和中心设备的UUID相同的两个UUID<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#define kCharacteristicUUID @&quot;EA0D&quot;</div><div class="line">#define kServiceUUID @&quot;84941CC5-EA0D-4CAE-BB06-1F849CCF8495&quot;</div></pre></td></tr></table></figure></p>
+<p>///初始化外设管理器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong) CBPeripheralManager *peripheralManager;</div><div class="line">self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];</div><div class="line"></div><div class="line">///判断状态</div><div class="line">-(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral &#123;</div><div class="line">    switch (peripheral.state) &#123;</div><div class="line">        case CBManagerStatePoweredOn:</div><div class="line">        &#123;</div><div class="line">            NSLog(@&quot;正常状态&quot;);</div><div class="line">            [self configCharacteristicAndService];</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case CBManagerStatePoweredOff:</div><div class="line">        case CBManagerStateUnknown:</div><div class="line">        case CBManagerStateResetting:</div><div class="line">        case CBManagerStateUnsupported:</div><div class="line">        case CBManagerStateUnauthorized:</div><div class="line">            NSLog(@&quot;非正常状态&quot;);</div><div class="line">            break;</div><div class="line">        default:</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">///配置特征和服务</div><div class="line">- (void)configCharacteristicAndService &#123;</div><div class="line">    CBUUID *serviceUUID = [CBUUID UUIDWithString:kServiceUUID];</div><div class="line">    CBMutableService *service = [[CBMutableService alloc] initWithType:serviceUUID primary:YES];</div><div class="line">    CBUUID *characteristicUUID = [CBUUID UUIDWithString:kCharacteristicUUID];</div><div class="line">    CBMutableCharacteristic *characteristic = [[CBMutableCharacteristic alloc] initWithType:characteristicUUID properties:CBCharacteristicPropertyWrite|CBCharacteristicPropertyNotify|CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsWriteable|CBAttributePermissionsReadable];</div><div class="line">    service.characteristics = @[characteristic];</div><div class="line">    self.characteristic = characteristic;</div><div class="line">    self.service = service;</div><div class="line">    [self.peripheralManager removeAllServices];</div><div class="line">    [self.peripheralManager addService:service];</div><div class="line">&#125;</div><div class="line"></div><div class="line">///判断是否添加服务成功的回调</div><div class="line">- (void)peripheralManager:(CBPeripheralManager *)peripheral</div><div class="line">            didAddService:(CBService *)service</div><div class="line">                    error:(NSError *)error &#123;</div><div class="line">    if (error) &#123;</div><div class="line">        NSLog(@&quot;error service: %@&quot;, [error localizedDescription]);</div><div class="line">    &#125;else&#123;</div><div class="line">        [self startService];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">///发送广播</div><div class="line">- (void)startService &#123;</div><div class="line">    [self.peripheralManager startAdvertising:@&#123; CBAdvertisementDataServiceUUIDsKey:@[self.service.UUID], CBAdvertisementDataLocalNameKey:@&quot;FD&quot; &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此时中心设备会进行数据发送，外设需接收中心设备发过来的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray&lt;CBATTRequest *&gt; *)requests &#123;</div><div class="line">    CBATTRequest *request = requests[0];</div><div class="line">    if ([request.characteristic.UUID isEqual:self.characteristic.UUID]) &#123;</div><div class="line">        self.characteristic.value = request.value;</div><div class="line">        [peripheral respondToRequest:request withResult:CBATTErrorSuccess];</div><div class="line">        NSData *data = request.value;</div><div class="line">        NSString *cmdStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];</div><div class="line">        NSDictionary *dict = [self dictionaryWithJsonString:cmdStr];</div><div class="line">        if ([[dict objectForKey:@&quot;status&quot;] isEqualToString:@&quot;sleep&quot;]) &#123;</div><div class="line">            [self sleep];</div><div class="line">        &#125;else if ([[dict objectForKey:@&quot;status&quot;] isEqualToString:@&quot;wake&quot;])&#123;</div><div class="line">            [self wakeUp];</div><div class="line">        &#125;</div><div class="line">        NSLog(@&quot;获取的数据%@&quot;,cmdStr);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">///锁屏</div><div class="line">- (void)sleep &#123;</div><div class="line">    io_registry_entry_t registerEntry = IORegistryEntryFromPath(kIOMasterPortDefault, &quot;IOService:/IOResources/IODisplayWrangler&quot;);</div><div class="line">    if (registerEntry) &#123;</div><div class="line">        IORegistryEntrySetCFProperty(registerEntry, CFSTR(&quot;IORequestIdle&quot;), kCFBooleanTrue);</div><div class="line">        IOObjectRelease(registerEntry);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">///唤醒</div><div class="line">- (void)wakeUp &#123;</div><div class="line">    io_registry_entry_t registerEntry = IORegistryEntryFromPath(kIOMasterPortDefault, &quot;IOService:/IOResources/IODisplayWrangler&quot;);</div><div class="line">    if (registerEntry) &#123;</div><div class="line">        IORegistryEntrySetCFProperty(registerEntry, CFSTR(&quot;IORequestIdle&quot;), kCFBooleanFalse);</div><div class="line">        IOObjectRelease(registerEntry);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>手机控制Mac电脑锁屏的大概流程就是这样，涉及到蓝牙连接，数据传输之类的相关知识，对蓝牙的使用有一个大概的体现。</p>
+<h5 id="4、Demo"><a href="#4、Demo" class="headerlink" title="4、Demo"></a>4、Demo</h5><p><a href="https://github.com/lihxCode/CoreBlueBooth" target="_blank" rel="external">github链接</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/15/ES6学习01/" rel="next" title="ES6学习-let，const">
+                <i class="fa fa-chevron-left"></i> ES6学习-let，const
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg"
+               alt="Kx" />
+          <p class="site-author-name" itemprop="name">Kx</p>
+          <p class="site-description motion-element" itemprop="description">keep</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、CoreBluetooth"><span class="nav-number">1.</span> <span class="nav-text">1、CoreBluetooth</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、Centeral-中心设备"><span class="nav-number">2.</span> <span class="nav-text">2、Centeral(中心设备)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、Peripheral-外设"><span class="nav-number">3.</span> <span class="nav-text">3、Peripheral(外设)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、Demo"><span class="nav-number">4.</span> <span class="nav-text">4、Demo</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kx</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
