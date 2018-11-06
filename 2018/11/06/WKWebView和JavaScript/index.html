@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="语法糖创建UI对象开发过程中，我们创建UI对象一般都是alloc init，然后对对象的属性进行赋值，一行一行下去。说不定在某一个位置又给这个对象的属性赋值，看起来就会散乱。但是，使用语法糖创建UI对象的话，看起来就很清爽，下面代码对比一下。使用语法糖123456789self.customImageView = (&amp;#123;    UIImageView *imageView = [[UIIm">
+<meta name="description" content="一、WKWebView和JavaScript的相互调用实现1、配置WKWebView12345678910111213//WKUserContentController配置，可以理解为一个控制器，作为WKWebView和JavaScript之间交互的桥梁[userController addScriptMessageHandler:self name:@&amp;quot;hello&amp;quot;];[us">
 <meta property="og:type" content="article">
-<meta property="og:title" content="语法糖创建UI对象">
-<meta property="og:url" content="http://yoursite.com/2018/03/30/语法糖创建UI对象/index.html">
+<meta property="og:title" content="WKWebView和JavaScript">
+<meta property="og:url" content="http://yoursite.com/2018/11/06/WKWebView和JavaScript/index.html">
 <meta property="og:site_name" content="Kx Blog">
-<meta property="og:description" content="语法糖创建UI对象开发过程中，我们创建UI对象一般都是alloc init，然后对对象的属性进行赋值，一行一行下去。说不定在某一个位置又给这个对象的属性赋值，看起来就会散乱。但是，使用语法糖创建UI对象的话，看起来就很清爽，下面代码对比一下。使用语法糖123456789self.customImageView = (&amp;#123;    UIImageView *imageView = [[UIIm">
-<meta property="og:updated_time" content="2018-03-30T09:29:35.379Z">
+<meta property="og:description" content="一、WKWebView和JavaScript的相互调用实现1、配置WKWebView12345678910111213//WKUserContentController配置，可以理解为一个控制器，作为WKWebView和JavaScript之间交互的桥梁[userController addScriptMessageHandler:self name:@&amp;quot;hello&amp;quot;];[us">
+<meta property="og:updated_time" content="2018-11-06T04:24:23.489Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="语法糖创建UI对象">
-<meta name="twitter:description" content="语法糖创建UI对象开发过程中，我们创建UI对象一般都是alloc init，然后对对象的属性进行赋值，一行一行下去。说不定在某一个位置又给这个对象的属性赋值，看起来就会散乱。但是，使用语法糖创建UI对象的话，看起来就很清爽，下面代码对比一下。使用语法糖123456789self.customImageView = (&amp;#123;    UIImageView *imageView = [[UIIm">
+<meta name="twitter:title" content="WKWebView和JavaScript">
+<meta name="twitter:description" content="一、WKWebView和JavaScript的相互调用实现1、配置WKWebView12345678910111213//WKUserContentController配置，可以理解为一个控制器，作为WKWebView和JavaScript之间交互的桥梁[userController addScriptMessageHandler:self name:@&amp;quot;hello&amp;quot;];[us">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/30/语法糖创建UI对象/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/06/WKWebView和JavaScript/"/>
 
 
 
 
 
-  <title> 语法糖创建UI对象 | Kx Blog </title>
+  <title> WKWebView和JavaScript | Kx Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +248,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/语法糖创建UI对象/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/WKWebView和JavaScript/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Kx">
@@ -272,7 +272,7 @@
             
             
               
-                语法糖创建UI对象
+                WKWebView和JavaScript
               
             
           </h1>
@@ -285,8 +285,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-30T17:17:17+08:00">
-                2018-03-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-06T11:55:40+08:00">
+                2018-11-06
               </time>
             
 
@@ -321,11 +321,13 @@
       
 
       
-        <h5 id="语法糖创建UI对象"><a href="#语法糖创建UI对象" class="headerlink" title="语法糖创建UI对象"></a>语法糖创建UI对象</h5><p>开发过程中，我们创建UI对象一般都是alloc init，然后对对象的属性进行赋值，一行一行下去。说不定在某一个位置又给这个对象的属性赋值，看起来就会散乱。<br>但是，使用语法糖创建UI对象的话，看起来就很清爽，下面代码对比一下。<br>使用语法糖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">self.customImageView = (&#123;</div><div class="line">    UIImageView *imageView = [[UIImageView alloc] init];</div><div class="line">    imageView.frame = self.view.bounds;</div><div class="line">    imageView.backgroundColor = [UIColor clearColor];</div><div class="line">    imageView.alpha = 1.0;</div><div class="line">    imageView.image =  [UIImage imageNamed:@&quot;xxx&quot;];</div><div class="line">    [self.view addSubview:imageView];</div><div class="line">    imageView;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>不使用语法糖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">self.customImageView = [[UIImageView alloc] init];</div><div class="line">self.customImageView.frame = self.view.bounds;</div><div class="line">self.customImageView.backgroundColor = [UIColor clearColor];</div><div class="line">self.customImageView.alpha = 1.0;</div><div class="line">self.customImageView.image  = [UIImage imageNamed:@&quot;xxx&quot;];</div><div class="line">[self.view addSubview:self.customImageView];</div></pre></td></tr></table></figure></p>
-<p>看起来差不多？再多加几个看看<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">self.customImageView1 = [[UIImageView alloc] init];</div><div class="line">self.customImageView1.frame = self.view.bounds;</div><div class="line">self.customImageView1.backgroundColor = [UIColor clearColor];</div><div class="line">self.customImageView1.alpha = 1.0;</div><div class="line">self.customImageView1.image  = [UIImage imageNamed:@&quot;xxx1&quot;];</div><div class="line">[self.view addSubview:self.customImageView1];</div><div class="line"></div><div class="line">self.customImageView2 = [[UIImageView alloc] init];</div><div class="line">self.customImageView2.frame = self.view.bounds;</div><div class="line">self.customImageView2.backgroundColor = [UIColor clearColor];</div><div class="line">self.customImageView2.alpha = 1.0;</div><div class="line">self.customImageView2.image  = [UIImage imageNamed:@&quot;xxx2&quot;];</div><div class="line">[self.view addSubview:self.customImageView2];</div><div class="line"></div><div class="line">self.customImageView3 = [[UIImageView alloc] init];</div><div class="line">self.customImageView3.frame = self.view.bounds;</div><div class="line">self.customImageView3.backgroundColor = [UIColor clearColor];</div><div class="line">self.customImageView3.alpha = 1.0;</div><div class="line">self.customImageView3.image  = [UIImage imageNamed:@&quot;xxx3&quot;];</div><div class="line">[self.view addSubview:self.customImageView3];</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">self.customImageView1 = (&#123;</div><div class="line">    UIImageView *imageView = [[UIImageView alloc] init];</div><div class="line">    imageView.frame = self.view.bounds;</div><div class="line">    imageView.backgroundColor = [UIColor clearColor];</div><div class="line">    imageView.alpha = 1.0;</div><div class="line">    imageView.image =  [UIImage imageNamed:@&quot;xxx1&quot;];</div><div class="line">    [self.view addSubview:imageView];</div><div class="line">    imageView;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">self.customImageView2 = (&#123;</div><div class="line">    UIImageView *imageView = [[UIImageView alloc] init];</div><div class="line">    imageView.frame = self.view.bounds;</div><div class="line">    imageView.backgroundColor = [UIColor clearColor];</div><div class="line">    imageView.alpha = 1.0;</div><div class="line">    imageView.image =  [UIImage imageNamed:@&quot;xxx2&quot;];</div><div class="line">    [self.view addSubview:imageView];</div><div class="line">    imageView;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">self.customImageView3 = (&#123;</div><div class="line">    UIImageView *imageView = [[UIImageView alloc] init];</div><div class="line">    imageView.frame = self.view.bounds;</div><div class="line">    imageView.backgroundColor = [UIColor clearColor];</div><div class="line">    imageView.alpha = 1.0;</div><div class="line">    imageView.image =  [UIImage imageNamed:@&quot;xxx3&quot;];</div><div class="line">    [self.view addSubview:imageView];</div><div class="line">    imageView;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>使用语法糖的代码更为清晰不凌乱</p>
+        <h5 id="一、WKWebView和JavaScript的相互调用实现"><a href="#一、WKWebView和JavaScript的相互调用实现" class="headerlink" title="一、WKWebView和JavaScript的相互调用实现"></a>一、WKWebView和JavaScript的相互调用实现</h5><p>1、配置WKWebView<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//WKUserContentController配置，可以理解为一个控制器，作为WKWebView和JavaScript之间交互的桥梁</div><div class="line">[userController addScriptMessageHandler:self name:@&quot;hello&quot;];</div><div class="line">[userController addScriptMessageHandler:self name:@&quot;alert&quot;];</div><div class="line"></div><div class="line">//WKWebViewConfiguration配置</div><div class="line">WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];</div><div class="line">config.userContentController = userController;</div><div class="line"></div><div class="line">//初始化webView</div><div class="line">self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];</div><div class="line">self.webView.UIDelegate = self;</div><div class="line">self.webView.navigationDelegate = self;</div><div class="line">[self.view addSubview:self.webView];</div></pre></td></tr></table></figure></p>
+<p>2、新建一个html网页，编写相关代码，以下简选了相关代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">  function test() &#123;</div><div class="line">      window.webkit.messageHandlers.hello.postMessage(&quot;hello world&quot;);</div><div class="line">  &#125;</div><div class="line">  function showAlert(msg) &#123;</div><div class="line">      window.webkit.messageHandlers.alert.postMessage(msg);</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button id = &quot;targetBtn&quot; onclick=&quot;test()&quot; style=&quot;background: red;width: 400px;height: 400px; margin: 0 auto;text-align: center;&quot;&gt;测试按钮&lt;/button&gt;</div></pre></td></tr></table></figure>
+<p>3、最后实现userContentController方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message &#123;</div><div class="line">  if ([message.name isEqualToString:@&quot;hello&quot;]) &#123;</div><div class="line">      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@&quot;提示&quot; message:@&quot;js调用原生代码&quot; delegate:self cancelButtonTitle:@&quot;取消&quot; otherButtonTitles:@&quot;确定&quot;, nil];</div><div class="line">      [alertView show];</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex &#123;</div><div class="line">    if (buttonIndex == 1) &#123;</div><div class="line">        NSString *msg = @&quot;Oc调用Js&quot;;</div><div class="line">        NSString *funcInvoke = [NSString stringWithFormat:@&quot;showAlert(&apos;%@&apos;)&quot;,msg];</div><div class="line">        [self.webView evaluateJavaScript:funcInvoke completionHandler:^(id _Nullable script, NSError * _Nullable error) &#123;</div><div class="line"></div><div class="line">        &#125;];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="二、总结："><a href="#二、总结：" class="headerlink" title="二、总结："></a>二、总结：</h5><p>1、JavaScript调用Oc原生代码处理思路：首先在userContentController中添加相关的消息监听，当网页中的JavaScript进行<code>window.webkit.messageHandlers.name.postMessage(massage);</code>相关调用时，监听器会进行消息捕获，捕获到相关消息之后，回调到<code>userContentController didReceiveScriptMessage</code>方法，然后开发者经过判断之后进行相关的信息处理。  </p>
+<p>2、Oc调用JavaScript更为方便，直接调用，需要监听是否执行也是可以通过上面的思路进行监听。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *jsScript = @&quot;相关javaScript代码或者对应的方法&quot;;</div><div class="line">[self.webView evaluateJavaScript:jsScript completionHandler:^(id _Nullable script, NSError * _Nullable error) &#123;</div><div class="line">&#125;];</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -358,8 +360,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/18/RunLoop/" rel="next" title="RunLoop">
-                <i class="fa fa-chevron-left"></i> RunLoop
+              <a href="/2018/11/01/iOS蓝牙探索/" rel="next" title="iOS蓝牙相关">
+                <i class="fa fa-chevron-left"></i> iOS蓝牙相关
               </a>
             
           </div>
@@ -367,10 +369,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/15/ES6学习01/" rel="prev" title="ES6学习-let，const">
-                ES6学习-let，const <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -483,7 +481,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#语法糖创建UI对象"><span class="nav-number">1.</span> <span class="nav-text">语法糖创建UI对象</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、WKWebView和JavaScript的相互调用实现"><span class="nav-number">1.</span> <span class="nav-text">一、WKWebView和JavaScript的相互调用实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、总结："><span class="nav-number">2.</span> <span class="nav-text">二、总结：</span></a></li></ol></div>
             
 
           </div>
