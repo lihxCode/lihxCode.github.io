@@ -249,6 +249,483 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/21/Effective-Objective-C-01-02/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/21/Effective-Objective-C-01-02/" itemprop="url">
+                  Effective-Objective-C-01-02
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-21T22:35:00+08:00">
+                2017-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一、Objective-C语言特性<br>1、在创建对象的时候，创建了一个分配在堆空间的实例，同时会有分配在栈空间的指针指向它。如果创建的变量为对象的时候，必须要有指针指向它。<br>2、分配在堆空间的内存需要我们进行管理，分配在栈空间的保存变量的内存在其栈帧弹出时自动清理。<br>3、非对象类型在初始化的时候分配在栈空间。<br>4、Objective-C采用的是动态绑定的消息结构，只有在运行时才会确定对象的类型以及方法调用的归属。</p>
+<p>二、<strong>尽量</strong>少在类的头文件中引入其他头文件<br>1、尽量少而不是不引入<br>2、引入其他类的头文件时会对其他类进行编译，导致编译时间变长<br>3、当只是声明了一个类的对象，没有必要知道该类的细节，可以不用引入头文件，而是使用向前声明@class xxxx的做法。且解决了相互引用的问题，一定程度上也减少编译时间。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/20/Effective Objective-C引用头文件-/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/20/Effective Objective-C引用头文件-/" itemprop="url">
+                  Effective Objective-C 引用头文件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T17:24:05+08:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="头文件的引用"><a href="#头文件的引用" class="headerlink" title="头文件的引用"></a>头文件的引用</h4><p>引用头文件主要是为了使用引用的类和类的一些方法，但是引用了头文件之后就包含了引用类的内容，当引用的头文件过多的时候会导致编译速度变慢<br>,当两个类的头文件相互引用的时候还会导致循环引用。<br>优化：<br>1、可以选择不在.h文件中使用#import 类.h的时候，在.h文件中使用@class 类.h，在.m文件中使用#import 类.h。<br>2、一定要在.h文件中进行引用头文件的时候，比如说需要使用代理协议的时候，这时我们可以使用分类来添加协议，然后引用分类的头文件，这样就不会导致循环引用，且编译的速度也会变快。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/09/Block的入门和使用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/09/Block的入门和使用/" itemprop="url">
+                  Block的入门和使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T17:57:17+08:00">
+                2017-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Block的入门和使用"><a href="#Block的入门和使用" class="headerlink" title="Block的入门和使用"></a>Block的入门和使用</h3><p>一、Block是什么<br>Block在OC中可以理解为一个对象。也可以说是一个匿名函数，类似于C语言中的指针。  </p>
+<p>二、Block的语法<br>Block的语法可以定义为两部分，第一部分是Block的声明，第二部分是Block的定义，Block的声明是在等于号的左边，Block的定义则在右边。例子：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> (^Callback)(<span class="built_in">NSString</span> \*text) = ^(<span class="built_in">NSString</span> \*text)&#123;</div><div class="line">  <span class="comment">//do something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/09/Block的入门和使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/07/iOS-圆角/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/07/iOS-圆角/" itemprop="url">
+                  iOS 圆角
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-07T12:06:23+08:00">
+                2017-02-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="iOS-创建圆角的方法"><a href="#iOS-创建圆角的方法" class="headerlink" title="iOS 创建圆角的方法"></a>iOS 创建圆角的方法</h4><p>1、直接设置layer.cornerRadius的值就可以，缺点是会导致性能问题，特别是在tableview上使用圆角的时候，会导致卡顿</p>
+<p>2、使用coreGraphics和贝塞尔曲线来设置圆角<br>首先是初始化一个UIImageView，设置好Image,然后使用UIGraphicsBeginImageContextWithOptions方法来对UIImageview进行创建一个context，UIGraphicsBeginImageContextWithOptions是有三个参数的，第一个是imageview的size,第二个是是否透明，第三个是缩放因子.<br>然后再调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[UIBezierPath bezierPathWithRoundedRect:Frame cornerRadius:CGFloat] addClip];  </div><div class="line">[imageview drawRect:imageview.frame];</div><div class="line">imageview.image = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">UIGraphicsEndImageContext();</div></pre></td></tr></table></figure></p>
+<p>3、使用贝塞尔曲线和CAShapeLayer设置圆角<br>一样是初始化一个UIImageView，设置好iamge.然后调用初始化一个UIBezierPath的对象，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRect byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSize];</div><div class="line">CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];</div><div class="line">maskLayer.path = maskPath.CGPath;</div></pre></td></tr></table></figure></p>
+<p>最后设置imageView的layer层的mask即可</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/CSS选择器/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -943,484 +1420,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/文本元素/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/25/文本元素/" itemprop="url">
-                  文本元素
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-25T18:57:23+08:00">
-                2016-11-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="文本元素"><a href="#文本元素" class="headerlink" title="文本元素"></a>文本元素</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span> = <span class="string">"zh_cn"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>文本元素<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">b</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">b</span>&gt;</span> <span class="comment">&lt;!-- 加粗，表示关键字或者产品名，表示的东西并不是很重要--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">strong</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> <span class="comment">&lt;!-- 加粗， 表示重要的文字--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="comment">&lt;!-- 换行，强制换行--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span> Thisabc <span class="tag">&lt;<span class="name">wbr</span>&gt;</span>dkdjaidjaid<span class="tag">&lt;<span class="name">wbr</span>&gt;</span>hedadaiod is apple. <span class="comment">&lt;!-- br放在任意位置之后就会换行，但是wbr是根据浏览器的宽度适当地进行裁剪换行--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">i</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="comment">&lt;!-- 作用是倾斜，表示英文或者一些术语，并不是特别强调--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">em</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">em</span>&gt;</span> <span class="comment">&lt;!--作用也是倾斜，表示强调--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">s</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">s</span>&gt;</span> <span class="comment">&lt;!--删除线，其实就是表示不准确的删除--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">del</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">del</span>&gt;</span> <span class="comment">&lt;!--也是删除线，但是表示的是删除相关的文字--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">u</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">u</span>&gt;</span> <span class="comment">&lt;!--下划线，不是强调--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">ins</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">ins</span>&gt;</span> <span class="comment">&lt;!--也是下划线，但是表示的是强调--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">small</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">small</span>&gt;</span>  <span class="comment">&lt;!--缩小字号 语义上来看，用于免责，和澄清声明--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">sub</span>&gt;</span>5<span class="tag">&lt;/<span class="name">sub</span>&gt;</span> <span class="comment">&lt;!--数学中的上标--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">sup</span>&gt;</span>5<span class="tag">&lt;/<span class="name">sup</span>&gt;</span> <span class="comment">&lt;!--数学中的下标--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">code</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="comment">&lt;!--表示计算机代码片段--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">var</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">var</span>&gt;</span> <span class="comment">&lt;!--表示编程语言中的变量--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">samp</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">samp</span>&gt;</span> <span class="comment">&lt;!--表示程序或者计算机的输出--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">kbd</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">kbd</span>&gt;</span> <span class="comment">&lt;!--表示拥护的输入--&gt;</span></div><div class="line">	<span class="comment">&lt;!--code,var,samp,kdb都属于英文范畴内的，需要设置lang="en"才有效--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">abbr</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">abbr</span>&gt;</span><span class="comment">&lt;!--表示缩写--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">dfn</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">dfn</span>&gt;</span><span class="comment">&lt;!--表示术语--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">q</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">q</span>&gt;</span><span class="comment">&lt;!--表示引用，实际就是加一对双引号--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">cite</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">cite</span>&gt;</span><span class="comment">&lt;!--加粗,表示引用其他作品的标题--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">mark</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">mark</span>&gt;</span><span class="comment">&lt;!--实际就是加一个黄色的背景，黑色的字，表示与上下文相关而突出的字--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">time</span>&gt;</span>2016-11-25<span class="tag">&lt;/<span class="name">time</span>&gt;</span><span class="comment">&lt;!--表示日期--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">span</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="comment">&lt;!--表示一般性文本，语义上就是表示一段文本，经常用来设置CSS等操作--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/25/基本样式/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/25/基本样式/" itemprop="url">
-                  基本样式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-25T18:56:38+08:00">
-                2016-11-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="基本样式"><a href="#基本样式" class="headerlink" title="基本样式"></a>基本样式</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span> <span class="comment">&lt;!--文档类型说明，主要告诉浏览器这是什么类型的文件--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh_cn"</span>&gt;</span> <span class="comment">&lt;!--html标签，html是文档的开始和结束标志，lang表示的是语言，zh_cn表示的是中文，en表示的是英文--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> <span class="comment">&lt;!--用来包含元数据，元数据包括&lt;link&gt;,&lt;meta&gt;,&lt;noscript&gt;,&lt;script&gt;,&lt;style&gt;,&lt;title&gt;,link提供css信息，script提供javaScript信息，title提供标题信息--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="comment">&lt;!-- 提供文档的信息，提供的文档的编码 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>基本结构<span class="tag">&lt;/<span class="name">title</span>&gt;</span> <span class="comment">&lt;!-- 提供标题信息--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span> <span class="comment">&lt;!-- 用来包含元数据的head标签的结束标志--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span> <span class="comment">&lt;!-- 用来包含文档的元素，即网页上的所有可以看到的内容都在这个元素内部添加--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"wwww.lihxCode.github.io"</span>&gt;</span> <span class="comment">&lt;!-- 超链接 用来跳转网址--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/23/iOS-RunTime分析/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/23/iOS-RunTime分析/" itemprop="url">
-                  iOS RunTime分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-23T19:17:31+08:00">
-                2016-11-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="1、什么是RunTime"><a href="#1、什么是RunTime" class="headerlink" title="1、什么是RunTime"></a>1、什么是RunTime</h4><p>RunTime即运行时，objective-c是一种运行时的语言，什么是运行时呢，运行时就是在程序运行的时候才去确定我们的对象的类型和需要调用类和对象相对应的方法。</p>
-<h4 id="2、RunTime的用法"><a href="#2、RunTime的用法" class="headerlink" title="2、RunTime的用法"></a>2、RunTime的用法</h4><p>RunTime是在我们程序运行的时候才去确定我们的对象类型，和调用类与对象相对应的方法，属性等，所以我们可以在程序运行时去修改对象的属性，方法，修改类。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/23/iOS-RunTime分析/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/23/iOS中数组赋值的问题/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/23/iOS中数组赋值的问题/" itemprop="url">
-                  iOS中数组赋值的问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-23T16:56:21+08:00">
-                2016-11-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="iOS中数组赋值的问题"><a href="#iOS中数组赋值的问题" class="headerlink" title="iOS中数组赋值的问题"></a>iOS中数组赋值的问题</h5><ul>
-<li><strong>背景：</strong><br>今天在开发的过程中把旧的数组直接给新的数组赋值，然后对新的数组进行操作，发现旧的数组竟然也发生了改变。想了很久都没想出来，然后问了一下大佬，然后，哎呀，发现自己好蠢。
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/23/iOS中数组赋值的问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1466,7 +1465,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1476,7 +1475,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
