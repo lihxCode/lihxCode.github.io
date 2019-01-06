@@ -249,6 +249,487 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/10/isMemberOfClass-isKindOfClass-isEqual/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/10/isMemberOfClass-isKindOfClass-isEqual/" itemprop="url">
+                  isMemberOfClass,isKindOfClass,isEqual
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-10T12:35:00+08:00">
+                2017-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、isMemberOfClass是用来判断某个对象是否为当前类的实例，不能用来判断是否属于某个类的子类,与父类没有关系。<br>2、isKindOfClass是用来判断某个对象是否属于某个类或者子类的实例，与父类有关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">People *p = [[People alloc] init];</div><div class="line">BOOL r1 = [p isMemberOfClass: [People class]];</div><div class="line">BOOL r2 = [[People class] isMemberOfClass: [People class]];</div><div class="line">BOOL r3 = [p isKindOfClass: [People class]];</div><div class="line">BOOL r4 = [[People class] isKindOfClass: [People class]];</div></pre></td></tr></table></figure></p>
+<p>结果是r1为YES，r2为NO，r3为YES，r4为NO。<code>[People class]</code>返回的是类对象，但是这个类对象没有初始化，所以比较时会被认为不相同，如果是<code>[[People alloc] init]</code>来进行比较就会返回YES。</p>
+<p>3、isEqual用来判断两个对象是否相等，具体是值是否相等之类的,和==不一样，==会根据判断两个对象的地址是否想等，不相等就会返回NO</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/05/protocol使用-property/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/05/protocol使用-property/" itemprop="url">
+                  protocol使用@property
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-05T17:02:00+08:00">
+                2017-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>1、在protocol中也是可以使用property的，先看代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">@protocol DataManageDelegate &lt;NSObject&gt;</div><div class="line"></div><div class="line">@property (nonatomic, copy) NSString *identifier;</div><div class="line">@end</div></pre></td></tr></table></figure></p>
+<p>在ViewController中遵循了该协议之后，然后给<code>identifier</code>赋值<code>self.identifier = @&quot;123&quot;;</code>，运行工程，发现crash了，Xcode提示是：<code>Terminating app due to uncaught exception &#39;NSInvalidArgumentException&#39;, reason: &#39;-[ViewController setIdentifier:]: unrecognized selector sent to instance 0x7f8ad4f069e0&#39;</code>，意思就是没有实现identifier的setter方法。getter方法没实现同样会crash。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/12/05/protocol使用-property/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/iOS-浅拷贝与深拷贝解析/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/04/iOS-浅拷贝与深拷贝解析/" itemprop="url">
+                  iOS-浅拷贝与深拷贝解析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-04T18:50:00+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h5 id="1、什么是浅拷贝，什么是深拷贝"><a href="#1、什么是浅拷贝，什么是深拷贝" class="headerlink" title="1、什么是浅拷贝，什么是深拷贝"></a>1、什么是浅拷贝，什么是深拷贝</h5><p>浅拷贝表示的是不拷贝内容，只拷贝对应的指针，即拷贝之后的值指向内存中的地址是一样的。深拷贝表示的是不拷贝指针，而拷贝的是内容，即拷贝之后的值是不变的，但是指向内存中的地址和拷贝前对应的值的内存中的地址是不一样的，可以说是全新的一个地址。</p>
+<h5 id="2、一个多层的数组进行拷贝，只有一层进行了深拷贝，这种算深拷贝？"><a href="#2、一个多层的数组进行拷贝，只有一层进行了深拷贝，这种算深拷贝？" class="headerlink" title="2、一个多层的数组进行拷贝，只有一层进行了深拷贝，这种算深拷贝？"></a>2、一个多层的数组进行拷贝，只有一层进行了深拷贝，这种算深拷贝？</h5><p>这种不能说是深拷贝，只能说是单层深拷贝。</p>
+<h4 id="3、copy和mutableCopy"><a href="#3、copy和mutableCopy" class="headerlink" title="3、copy和mutableCopy"></a>3、copy和mutableCopy</h4><p>在使用copy和mutableCopy进行相关处理时需要区分集合对象和非集合对象。<br>集合对象：指的是NSArray，NSDictionary之类的<br>非集合对象：NSString，NSNumber之类的<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/12/04/iOS-浅拷贝与深拷贝解析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/OC重写property属性的set-get方法一点注意/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/11/21/OC重写property属性的set-get方法一点注意/" itemprop="url">
+                  OC重写property属性的set&get方法一点注意
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T11:59:00+08:00">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>当重写了property声明的属性的set方法之后，再声明get方法，在get方法中使用_xxx变量时会报错，因为set和get方法都重写了会导致系统自动生成的_xxx变量失效，相当于没有生成过一个这样的变量，直接使用是会报错的。<br>解决方法就是在.m文件中对属性制定一个命名@synthesize  xxx = _xxx;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/08/Collection-CALayerArray-xxxxxxx-was-mutated-while-being-enumerated/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -947,485 +1428,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/数组解析/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/20/数组解析/" itemprop="url">
-                  数组解析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T09:10:20+08:00">
-                2017-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1、<code>int array[20] = {0}</code>表示的是数组的第一个数为0，其他也默认为0<br>2、<code>int array[20] = {1}</code>表示的是数组的第一个数为1，其他默认为0<br>3、<code>int array[20]; array[19] = 100</code>除了最后一个数位赋的值100，其他都为随机数，可能为0，也可能为其他数。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/指针解析/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/16/指针解析/" itemprop="url">
-                  指针解析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-16T12:17:22+08:00">
-                2017-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1、指针的类型：指的是指针自身的类型<br><code>int *p;</code>指针p的类型是<code>int*</code><br>2、指针指向的类型：指的是指针指向的数据的类型<br><code>int *p</code>指针p指向的类型是<code>int</code><br>3、指针的值：指的是指针指向的数据的值，会被编译器当成一个地址。位置是从指针的值的代表的内存地址开始，长度为sizeof(指针指向的类型)<br>4、指针占据的内存大小=sizeof(指针的类型)<br>5、<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int size = 10;</div><div class="line">int *i;</div><div class="line">i = (int *)malloc(size);</div><div class="line">i[i] = 1;</div></pre></td></tr></table></figure></p>
-<p><code>i[1]</code>变成了数组赋值？其实i[1] = <em>(i+1); i+1相当于i+ 1 </em> sizeof(int)，这样就可以找到下一个元素的首地址，和i[1]是一样的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/20/iOS-Block/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/20/iOS-Block/" itemprop="url">
-                  iOS-Block
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T15:31:00+08:00">
-                2017-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>一、Block是什么<br>Block在OC中可以理解为一个对象。也可以说是一个匿名函数，类似于C语言中的指针。<br>二、Block的语法<br>Block的语法可以定义为两部分，第一部分是Block的声明，第二部分是Block的定义，Block的声明是在等于号的左边，Block的定义则在右边。例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void (^Callback)(NSString *text) = ^(NSString *text)&#123;</div><div class="line">  //do something</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/20/iOS-Block/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/22/Effective-Objective-C-03-04/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/22/Effective-Objective-C-03-04/" itemprop="url">
-                  Effective-Objective-C-03-04
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-22T23:19:00+08:00">
-                2017-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="一、多用字面量语法"><a href="#一、多用字面量语法" class="headerlink" title="一、多用字面量语法**"></a>一、多用字面量语法**</h5><p>1、字面量语法指的是直接使用@加上值对Foundation的常用的类进行初始化，例如NSString，NSArray，NSDictionary，NSNumber。<br>2、字面量语法的好处就是缩短源代码的长度，增加可读性与整洁度。<br>3、使用字面量创建数组或者字典对象的时候，比使用非字面量创建数组对象的好处就是在字面量创建数组或者对象时如果值为nil就会报出异常，而非字面量创建数组或者字典对象不会报异常，直到读取数组或者字典中的值为nil的时候才会报异常。所以使用字面量语法更为安全。</p>
-<h5 id="二、多用类型常量，少用define预处理指令"><a href="#二、多用类型常量，少用define预处理指令" class="headerlink" title="二、多用类型常量，少用define预处理指令"></a>二、多用类型常量，少用define预处理指令</h5><p>1、声明一个常量时我们经常会用到#define TIMEINTERVAL 1.0之类的预处理指令。但是使用这样的预处理指令在引入头文件之后，所有的TIMEINTERVAL都会被设置为1.0，且TIMEINTERVAL的类型并没有明确说明。<br>2、解决方案：使用<code>static const CGFloat kTimeInterval = 1.0;</code>这样的语法对常量进行定义。这样的好处是明确地指明了该常量的类型，增加了阅读性。ps:开头加上k表示常量，使用staic和const进行声明的好处是当尝试对常量进行改变的时候编译器就会报错提醒，添加staic的原因是为了防止当多个.m文件中声明了命名一样的常量时报错，报错的原因是使用const字段时编译器会创建一个外部符号，如果存在两个一样的外部符号那么就会报错,等同于创建了两个一样变量名的变量一样。添加了static就不会创建外部符号，所以不存在一样符号名的问题自然也不会编译报错。<br>3、若类型常量不需要公开，那么不应该添加在头文件中，而是在实现文件即.m文件中进行声明。<br>4、如果需要对类型常量进行公开那么在实现文件中的类型常量就要定义为<code>CGFloat const kTimeInterval  = 1.0;</code>而在头文件中，需要使用extern关键字对类型常量进行声明<code>extern CGFloat const kTimeInterval;</code>。即相当于在头文件中声明，在实现文件中定义。<br>5、注意类型常量的命名，防止命名冲突导致数据对不上。一般使用类名作为前缀来区分。例如：UIImageViewTimeInterval</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1466,7 +1473,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1516,7 +1523,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
