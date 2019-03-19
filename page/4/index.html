@@ -249,6 +249,709 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/OC重写property属性的set-get方法一点注意/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/11/21/OC重写property属性的set-get方法一点注意/" itemprop="url">
+                  OC重写property属性的set&get方法一点注意
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T11:59:00+08:00">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>当重写了property声明的属性的set方法之后，再声明get方法，在get方法中使用_xxx变量时会报错，因为set和get方法都重写了会导致系统自动生成的_xxx变量失效，相当于没有生成过一个这样的变量，直接使用是会报错的。<br>解决方法就是在.m文件中对属性制定一个命名@synthesize  xxx = _xxx;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/08/Collection-CALayerArray-xxxxxxx-was-mutated-while-being-enumerated/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/11/08/Collection-CALayerArray-xxxxxxx-was-mutated-while-being-enumerated/" itemprop="url">
+                  Collection--CALayerArray-xxxxxxx--was-mutated-while-being-enumerated-
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-08T22:22:22+08:00">
+                2017-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在遍历subviews中的view的同时对view进行removeFromSubview操作，有几率会导致crash，google之后得到解决方案：<a href="http://blog.cpease.com/2016/09/07/Collection-CALayerArray-0xxxxxxxxx-was-mutated-while-being-enumerated/" target="_blank" rel="external">链接</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/16/reuseTableViewCell/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/16/reuseTableViewCell/" itemprop="url">
+                  reuseTableViewCell
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-16T19:38:27+08:00">
+                2017-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一、reusableTableCells和visiableCells<br>reusableTableCells为存储复用cell的字典<br>visiableCells为存储当前屏幕使用的cell的数组</p>
+<p>二、复用机制<br>使用tableview时，一开始reusableTableCells是为空的，所以需要通过alloc init来生成一屏幕显示数量+1个cell。生成的cell放到visiableCells中，然后当滑动屏幕时，第一个cell滑出屏幕，这个cell没有被销毁，而是存放到reusableTableCells中。当再次滑动之后，顶部的cell从visiableCells取出放到reusableTableCells，最底部显示最新的cell，这个cell就是从reusableTableCells中取出来的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/12/CAST-String-AS-INT/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/12/CAST-String-AS-INT/" itemprop="url">
+                  CAST(String-AS-INT)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T17:08:00+08:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Sqlite中进行SELECT查询语句的时候，如果需要比较的数字的大小类型是字符串类型，可以使用<code>CAST(xxxx AS INT)</code>进行类型转换之后再进行比较，否则直接使用大于等于小于比较得出的结果是不正确的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/27/SQL语句加WHERE-1-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/27/SQL语句加WHERE-1-1/" itemprop="url">
+                  SQL语句加WHERE-1-=-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-27T11:21:00+08:00">
+                2017-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>加上<code>WHERE 1 = 1</code>是用于构造动态的SQL语句，<code>SELECT * FROM .... WHERE 1 = 1 + 动态构造条件语句</code>。为了避免WHERE 关键字后面的第一个词直接就是 “and”而导致语法错误。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/16/iOS-weak/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kx">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kx Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/16/iOS-weak/" itemprop="url">
+                  iOS-weak
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-16T16:30:15+08:00">
+                2017-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、weak的意思是不持有对象，但是对象的释放也是在超出其生命周期之后，所以说，使用weak修饰的属性在该类的生命周期结束之后才会被释放，并不是说weak修饰就是马上马上会被释放，如果修饰的是局部变量那就是马上会被释放。总结：用什么修饰符并不影响属性的生命周期，我们用weak来修饰delegate以防循环引用导致内存泄漏，虽然delegate的修饰符是weak，但是在生命周期中，delegate这个变量是不会被系统马上回收的，直到delegate这个属性所在的类超出了其生命周期之后才会被释放<br>2、系统的回收机制是怎样的呢？<br>首先释放的类的对象，我们alloc init生成出来的其实是一个对象，只是我们这个类持有了这个对象。释放完类的对象之后，释放对应的属性，因为属性被废弃了，所以属性持有的对象的强引用也没了，所以相对应地对象也被释放了。总结：类的对象-&gt;类-&gt;类的属性-&gt;类的属性持有的对象。个人认为系统对内存的管理和回收顺序是这样的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/typedef struct和struct的区别/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -717,719 +1420,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/22/Effective-Objective-C-03-04/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/22/Effective-Objective-C-03-04/" itemprop="url">
-                  Effective-Objective-C-03-04
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-22T23:19:00+08:00">
-                2017-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="一、多用字面量语法"><a href="#一、多用字面量语法" class="headerlink" title="一、多用字面量语法**"></a>一、多用字面量语法**</h5><p>1、字面量语法指的是直接使用@加上值对Foundation的常用的类进行初始化，例如NSString，NSArray，NSDictionary，NSNumber。<br>2、字面量语法的好处就是缩短源代码的长度，增加可读性与整洁度。<br>3、使用字面量创建数组或者字典对象的时候，比使用非字面量创建数组对象的好处就是在字面量创建数组或者对象时如果值为nil就会报出异常，而非字面量创建数组或者字典对象不会报异常，直到读取数组或者字典中的值为nil的时候才会报异常。所以使用字面量语法更为安全。</p>
-<h5 id="二、多用类型常量，少用define预处理指令"><a href="#二、多用类型常量，少用define预处理指令" class="headerlink" title="二、多用类型常量，少用define预处理指令"></a>二、多用类型常量，少用define预处理指令</h5><p>1、声明一个常量时我们经常会用到#define TIMEINTERVAL 1.0之类的预处理指令。但是使用这样的预处理指令在引入头文件之后，所有的TIMEINTERVAL都会被设置为1.0，且TIMEINTERVAL的类型并没有明确说明。<br>2、解决方案：使用<code>static const CGFloat kTimeInterval = 1.0;</code>这样的语法对常量进行定义。这样的好处是明确地指明了该常量的类型，增加了阅读性。ps:开头加上k表示常量，使用staic和const进行声明的好处是当尝试对常量进行改变的时候编译器就会报错提醒，添加staic的原因是为了防止当多个.m文件中声明了命名一样的常量时报错，报错的原因是使用const字段时编译器会创建一个外部符号，如果存在两个一样的外部符号那么就会报错,等同于创建了两个一样变量名的变量一样。添加了static就不会创建外部符号，所以不存在一样符号名的问题自然也不会编译报错。<br>3、若类型常量不需要公开，那么不应该添加在头文件中，而是在实现文件即.m文件中进行声明。<br>4、如果需要对类型常量进行公开那么在实现文件中的类型常量就要定义为<code>CGFloat const kTimeInterval  = 1.0;</code>而在头文件中，需要使用extern关键字对类型常量进行声明<code>extern CGFloat const kTimeInterval;</code>。即相当于在头文件中声明，在实现文件中定义。<br>5、注意类型常量的命名，防止命名冲突导致数据对不上。一般使用类名作为前缀来区分。例如：UIImageViewTimeInterval</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/21/Effective-Objective-C-01-02/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/21/Effective-Objective-C-01-02/" itemprop="url">
-                  Effective-Objective-C-01-02
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-21T22:35:00+08:00">
-                2017-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一、Objective-C语言特性<br>1、在创建对象的时候，创建了一个分配在堆空间的实例，同时会有分配在栈空间的指针指向它。如果创建的变量为对象的时候，必须要有指针指向它。<br>2、分配在堆空间的内存需要我们进行管理，分配在栈空间的保存变量的内存在其栈帧弹出时自动清理。<br>3、非对象类型在初始化的时候分配在栈空间。<br>4、Objective-C采用的是动态绑定的消息结构，只有在运行时才会确定对象的类型以及方法调用的归属。</p>
-<p>二、<strong>尽量</strong>少在类的头文件中引入其他头文件<br>1、尽量少而不是不引入<br>2、引入其他类的头文件时会对其他类进行编译，导致编译时间变长<br>3、当只是声明了一个类的对象，没有必要知道该类的细节，可以不用引入头文件，而是使用向前声明@class xxxx的做法。且解决了相互引用的问题，一定程度上也减少编译时间。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/20/Effective Objective-C引用头文件-/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/20/Effective Objective-C引用头文件-/" itemprop="url">
-                  Effective Objective-C 引用头文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T17:24:05+08:00">
-                2017-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="头文件的引用"><a href="#头文件的引用" class="headerlink" title="头文件的引用"></a>头文件的引用</h4><p>引用头文件主要是为了使用引用的类和类的一些方法，但是引用了头文件之后就包含了引用类的内容，当引用的头文件过多的时候会导致编译速度变慢<br>,当两个类的头文件相互引用的时候还会导致循环引用。<br>优化：<br>1、可以选择不在.h文件中使用#import 类.h的时候，在.h文件中使用@class 类.h，在.m文件中使用#import 类.h。<br>2、一定要在.h文件中进行引用头文件的时候，比如说需要使用代理协议的时候，这时我们可以使用分类来添加协议，然后引用分类的头文件，这样就不会导致循环引用，且编译的速度也会变快。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/09/Block的入门和使用/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/09/Block的入门和使用/" itemprop="url">
-                  Block的入门和使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T17:57:17+08:00">
-                2017-02-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Block的入门和使用"><a href="#Block的入门和使用" class="headerlink" title="Block的入门和使用"></a>Block的入门和使用</h3><p>一、Block是什么<br>Block在OC中可以理解为一个对象。也可以说是一个匿名函数，类似于C语言中的指针。  </p>
-<p>二、Block的语法<br>Block的语法可以定义为两部分，第一部分是Block的声明，第二部分是Block的定义，Block的声明是在等于号的左边，Block的定义则在右边。例子：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> (^Callback)(<span class="built_in">NSString</span> \*text) = ^(<span class="built_in">NSString</span> \*text)&#123;</div><div class="line">  <span class="comment">//do something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/09/Block的入门和使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/07/iOS-圆角/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/07/iOS-圆角/" itemprop="url">
-                  iOS 圆角
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-07T12:06:23+08:00">
-                2017-02-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="iOS-创建圆角的方法"><a href="#iOS-创建圆角的方法" class="headerlink" title="iOS 创建圆角的方法"></a>iOS 创建圆角的方法</h4><p>1、直接设置layer.cornerRadius的值就可以，缺点是会导致性能问题，特别是在tableview上使用圆角的时候，会导致卡顿</p>
-<p>2、使用coreGraphics和贝塞尔曲线来设置圆角<br>首先是初始化一个UIImageView，设置好Image,然后使用UIGraphicsBeginImageContextWithOptions方法来对UIImageview进行创建一个context，UIGraphicsBeginImageContextWithOptions是有三个参数的，第一个是imageview的size,第二个是是否透明，第三个是缩放因子.<br>然后再调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[UIBezierPath bezierPathWithRoundedRect:Frame cornerRadius:CGFloat] addClip];  </div><div class="line">[imageview drawRect:imageview.frame];</div><div class="line">imageview.image = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">UIGraphicsEndImageContext();</div></pre></td></tr></table></figure></p>
-<p>3、使用贝塞尔曲线和CAShapeLayer设置圆角<br>一样是初始化一个UIImageView，设置好iamge.然后调用初始化一个UIBezierPath的对象，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRect byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSize];</div><div class="line">CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];</div><div class="line">maskLayer.path = maskPath.CGPath;</div></pre></td></tr></table></figure></p>
-<p>最后设置imageView的layer层的mask即可</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/CSS选择器/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kx">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww2.sinaimg.cn/large/af41b6a9gw1f9u1hzkl3kj20b40b43yq.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kx Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kx Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/29/CSS选择器/" itemprop="url">
-                  CSS选择器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T20:06:26+08:00">
-                2016-11-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">charset</span> <span class="string">"utf-8"</span>;</div><div class="line"><span class="selector-tag">p</span>&#123;</div><div class="line">	<span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#abc</span> &#123;<span class="comment">/*使用ID选择器来设置样式的话，id不能够为数字，且id要唯一*/</span></div><div class="line">	<span class="attribute">color</span>: black;</div><div class="line">	<span class="attribute">font-size</span>: <span class="number">20px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.sel</span> &#123;</div><div class="line">	<span class="attribute">color</span>: green;</div><div class="line">	<span class="attribute">font-size</span>: <span class="number">30px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-attr">[href ^= "http"]</span> &#123;<span class="comment">/*匹配属性值开头的属性选择器*/</span></div><div class="line">	<span class="attribute">border</span>: <span class="number">1px</span> solid red;</div><div class="line">	<span class="attribute">color</span>: blue;</div><div class="line">&#125;</div><div class="line">&lt;!<span class="selector-tag">--</span> <span class="selector-tag">more</span> <span class="selector-tag">--</span>&gt;</div><div class="line"><span class="selector-attr">[href $= ".com"]</span> &#123;<span class="comment">/*匹配属性值结尾的属性选择器*/</span></div><div class="line">	<span class="attribute">color</span>: green;</div><div class="line">&#125;</div><div class="line"><span class="selector-attr">[type = "password"]</span> &#123;<span class="comment">/*匹配属性值的属性选择器*/</span></div><div class="line">	<span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-attr">[href *= "google"]</span> &#123; <span class="comment">/*匹配属性值是包含的属性选择器*/</span></div><div class="line">	<span class="attribute">color</span>: black;</div><div class="line">&#125;</div><div class="line"><span class="selector-attr">[class ~= "fff"]</span> &#123; <span class="comment">/*当class中有多个值的时候，匹配其中一个值的属性选择器*/</span></div><div class="line">	<span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-attr">[lang |= "en"]</span> &#123;<span class="comment">/*当有多个值的时候，且中间是用－间隔开的属性选择器*/</span></div><div class="line">	<span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">p</span>,<span class="selector-tag">i</span>,<span class="selector-tag">span</span>,<span class="selector-tag">b</span> &#123;<span class="comment">/*将多个选择器通关逗号分隔，同时设置一个样式*/</span></div><div class="line">	<span class="comment">/*color: red;*/</span></div><div class="line">&#125;</div><div class="line"><span class="selector-tag">p</span> <span class="selector-tag">b</span> &#123;<span class="comment">/*选择p元素中的b，不管b元素在哪里，也可以使用其他选择，例如ID，class，属性选择器等*/</span></div><div class="line">	<span class="attribute">color</span>: blue;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span> &#123; <span class="comment">/*子选择器只能选择父类中的子类的元素，不能再往下选择，也就是只能选一级*/</span></div><div class="line">	<span class="attribute">color</span>: gray;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">p</span> + <span class="selector-tag">b</span> &#123; <span class="comment">/*相邻选择器，匹配相邻的第一个和第二个元素，受影响的是之后的元素，第一个元素不受影响*/</span></div><div class="line">	<span class="attribute">color</span>: green;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">b</span> ~ <span class="selector-tag">i</span> &#123; <span class="comment">/*匹配第一个元素之后所有元素，不能是之前的，上面的是可以匹配之前的，受影响的也是之后的元素*/</span></div><div class="line">	<span class="attribute">color</span>:gray;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">div</span><span class="selector-pseudo">::first-line</span> &#123;<span class="comment">/*伪元素选择器，first-line只处理第一行的，第一行之后的不处理*/</span></div><div class="line">	<span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">div</span><span class="selector-pseudo">::first-letter</span> &#123;<span class="comment">/*对头一个字母进行处理*/</span></div><div class="line">	<span class="attribute">color</span>: black;</div><div class="line">	<span class="attribute">font-size</span>: <span class="number">50</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">::before</span> &#123;<span class="comment">/*在文本前插入内容*/</span></div><div class="line">	<span class="attribute">content</span>: <span class="string">"点击-"</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">::after</span> &#123; <span class="comment">/*在文本后插入内容*/</span></div><div class="line">	<span class="attribute">content</span>: <span class="string">"退出"</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#FF0000</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#00FF00</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#FF00FF</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#0000FF</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*CSS中，a::hover必须在 a::link 和 a::visited之后。 a::active必须在a::hover之后*/</span></div><div class="line"><span class="comment">/*伪类选择器*/</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-class">.one</span><span class="selector-pseudo">::link</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#ff0000</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-class">.one</span><span class="selector-pseudo">:visited</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#0000ff</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-class">.one</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#ffcc00</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-class">.two</span><span class="selector-pseudo">:link</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#ff0000</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-class">.two</span><span class="selector-pseudo">:visited</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#0000ff</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-class">.two</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">	<span class="attribute">font-size</span>: <span class="number">150%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-class">.three</span><span class="selector-pseudo">:link</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#ff0000</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-class">.three</span><span class="selector-pseudo">:visited</span> &#123;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#0000ff</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-class">.three</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">	<span class="attribute">background</span>: <span class="number">#66ff66</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh_cn"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"TheSecondChapter_selector.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>css选择器<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>选择器<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"abc"</span>&gt;</span>选择器<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"sel"</span>&gt;</span>选择器<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"s1 s2"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="comment">&lt;!--类选择器还可以跳用多个样式，中间使用空格间隔开--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http:wwww.lihxCode.github.io"</span>&gt;</span>blog<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"wwww.baidu.com"</span>&gt;</span>blog<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"psw"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"www.google.com"</span>&gt;</span>Google<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"fff ggg ccc"</span>&gt;</span>FFFFF<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">i</span> <span class="attr">lang</span>=<span class="string">"en-us"</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>son</div><div class="line">				<span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span>孙子<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>son<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>son<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>HTML5<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">b</span>&gt;</span>HTML4<span class="tag">&lt;/<span class="name">b</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">b</span>&gt;</span>My HTML<span class="tag">&lt;/<span class="name">b</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">i</span>&gt;</span>Your HTML<span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span> You can use the :first-line pseudo-element to add a <span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	special effect to the first line of a text!</div><div class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://lihxCode.github.io"</span>&gt;</span>My Blog<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"ThetenthChapter_formElenemt.html"</span>&gt;</span>这是一个链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"one"</span> <span class="attr">href</span>=<span class="string">"ThetenthChapter_formElenemt.html"</span>&gt;</span>链接1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"two"</span> <span class="attr">href</span>=<span class="string">"ThetenthChapter_formElenemt.html"</span>&gt;</span>链接2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"three"</span> <span class="attr">href</span>=<span class="string">"ThetenthChapter_formElenemt.html"</span>&gt;</span>链接3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1475,7 +1465,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-count">58</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1485,7 +1475,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
